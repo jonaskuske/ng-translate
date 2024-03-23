@@ -15,18 +15,13 @@ import { Language, TranslationService } from "../translation.service"
 			class="grid"
 			style="grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem;"
 		>
-			<db-select
-				ngModel
-				name="source_lang"
-				label="Ausgangssprache"
-				style="grid-column: 1"
-			>
+			<db-select ngModel name="source_lang" label="Ausgangssprache" style="grid-column: 1">
 				<option selected value="">Automatisch erkennen</option>
 				@for (lang of sourceLanguages; track lang) {
 				<option [value]="lang.language">{{ lang.name }}</option>
 				}
 			</db-select>
-			<db-select ngModel name="target_lang" label="Zielsprache" style="grid-column: 2">
+			<db-select required ngModel name="target_lang" label="Zielsprache" style="grid-column: 2">
 				<option value="" selected disabled>Auswählen...</option>
 				@for (lang of targetLanguages; track lang) {
 				<option [value]="lang.language">{{ lang.name }}</option>
@@ -61,6 +56,8 @@ import { Language, TranslationService } from "../translation.service"
 					<db-headline variant="3" class="mr-auto">Ausgangstext</db-headline>
 				</div>
 				<db-textarea
+					required
+					(input)="f.controls['text'].setValue(getValue($event))"
 					ngModel
 					name="text"
 					class="flex-grow"
@@ -96,6 +93,7 @@ import { Language, TranslationService } from "../translation.service"
 				<p id="result">{{ translationResult }}</p>
 			</div>
 			<db-button
+				[attr.disabled]="f.invalid"
 				style="grid-column: span 2; justify-self: center"
 				variant="brand-primary"
 				type="submit"
@@ -143,6 +141,10 @@ export default class TranslateComponent {
 		this.translation.getTargetLanguages().subscribe((res) => {
 			this.targetLanguages = res
 		})
+	}
+
+	getValue(evt: Event) {
+		return (evt.target as HTMLInputElement | HTMLTextAreaElement).value
 	}
 
 	copyResult() {
