@@ -1,3 +1,14 @@
+FROM node:20.11.1 as builder
+WORKDIR /usr/src/app
+RUN apk add bash
+SHELL [ "/bin/bash", "-c" ]
+COPY ./.yarn ./.yarn
+COPY package.json yarn.lock .yarnrc.yml ./
+RUN yarn install --immutable
+COPY . .
+RUN yarn build
+
 FROM caddy:2.7.6-alpine
+ENV PORT 80
 COPY Caddyfile /etc/caddy/Caddyfile
-COPY dist/browser /srv
+COPY --from=builder /usr/src/app/dist/browser /srv
