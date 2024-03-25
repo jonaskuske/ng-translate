@@ -1,4 +1,4 @@
-FROM node:20.11.1 as builder
+FROM node:20.11.0-alpine as builder
 WORKDIR /usr/src/app
 RUN apk add bash
 SHELL [ "/bin/bash", "-c" ]
