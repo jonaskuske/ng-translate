@@ -37,6 +37,6 @@
     import cors
   }
 
-  root * dist/browser
+  root * /srv/site
   file_server
 }

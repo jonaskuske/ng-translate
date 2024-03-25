@@ -11,4 +11,4 @@ RUN yarn build
 FROM caddy:2.7.6-alpine
 ENV PORT 80
 COPY Caddyfile /etc/caddy/Caddyfile
-COPY --from=builder /usr/src/app/dist/browser /srv
+COPY --from=builder /usr/src/app/dist/browser /srv/site
