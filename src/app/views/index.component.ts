@@ -14,6 +14,7 @@ import { Language } from "../types"
 			#f="ngForm"
 			(ngSubmit)="onSubmit(f)"
 			class="grid"
+			[class.show-result]="showResult"
 			style="grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem;"
 		>
 			<db-select ngModel name="source_lang" label="Ausgangssprache" style="grid-column: 1">
@@ -29,20 +30,18 @@ import { Language } from "../types"
 				}
 			</db-select>
 			<db-accordion summary="Erweiterte Optionen" style="grid-column: span 2;">
-				<div class="flex" style="gap: 1rem; margin-bottom: 1rem;">
+				<div class="flex accordion-row" style="gap: 1rem; margin-bottom: 1rem;">
 					<span>Förmlichkeit:</span>
 					<db-radio checked name="formality" label="Standard" value="default"></db-radio>
 					<db-radio name="formality" label="Förmlicher" value="prefer_more"></db-radio>
 					<db-radio name="formality" label="Weniger förmlich" value="prefer_less"></db-radio>
 
-					<div class="ml-auto">
-						<db-checkbox
-							ngModel
-							name="adjust_formatting"
-							checked
-							label="Format/Zeichensetzung anpassen"
-						/>
-					</div>
+					<db-checkbox
+						ngModel
+						name="adjust_formatting"
+						checked
+						label="Format/Zeichensetzung anpassen"
+					/>
 				</div>
 
 				<div style="margin-bottom: 1rem;">
@@ -52,7 +51,7 @@ import { Language } from "../types"
 				<db-textarea ngModel name="context" rows="3" label="Kontext für die Übersetzung (Alpha):" />
 			</db-accordion>
 
-			<div class="flex flex-column" style="grid-column: 1; height: clamp(275px, 50vh, 475px)">
+			<div class="text flex flex-column" style="height: clamp(275px, 50vh, 475px)">
 				<div class="flex items-center" style="gap: 0.5rem;">
 					<db-headline variant="3" class="mr-auto">Ausgangstext</db-headline>
 				</div>
@@ -66,7 +65,7 @@ import { Language } from "../types"
 					label="Zu übersetzender Text"
 				/>
 			</div>
-			<div class="flex flex-column" style="grid-column: 2; height: clamp(275px, 50vh, 475px);">
+			<div class="result flex flex-column" style="height: clamp(275px, 50vh, 475px);">
 				<div class="flex items-center" style="gap: 0.5rem;">
 					<db-headline variant="3" class="mr-auto">Resultat</db-headline>
 					<db-button
@@ -95,11 +94,19 @@ import { Language } from "../types"
 			</div>
 			<db-button
 				[attr.disabled]="f.invalid"
-				style="grid-column: span 2; justify-self: center"
+				class="btn-translate"
 				variant="brand-primary"
 				type="submit"
 			>
 				Übersetzen
+			</db-button>
+			<db-button
+				class="btn-new-translation"
+				variant="primary"
+				type="button"
+				(click)="showResult = false"
+			>
+				Neue Übersetzung
 			</db-button>
 		</form>
 	`,
@@ -125,6 +132,43 @@ import { Language } from "../types"
 				font-size: 7rem;
 				margin: auto;
 			}
+
+			.accordion-row {
+				flex-direction: column;
+			}
+			.accordion-row :last-child {
+				margin: 1rem 0 1rem 0;
+			}
+
+			.btn-new-translation,
+			.btn-translate {
+				justify-self: center;
+				grid-column: span 2;
+			}
+
+			@media (min-width: 650px) {
+				.btn-new-translation {
+					display: none;
+				}
+				.accordion-row {
+					flex-direction: row;
+				}
+				.accordion-row :last-child {
+					margin: 0 0 0 auto;
+				}
+			}
+			@media (max-width: 649px) {
+				.text,
+				.result {
+					grid-column: span 2;
+				}
+				form.show-result .text,
+				form:not(.show-result) .result,
+				form:not(.show-result) .btn-new-translation,
+				form.show-result .btn-translate {
+					display: none;
+				}
+			}
 		`,
 	],
 })
@@ -135,12 +179,14 @@ export default class TranslateComponent {
 	sourceLanguages: Language[] = []
 	targetLanguages: Language[] = []
 
+	showResult = false
+
 	constructor(private translation: TranslationService) {
-		this.translation.getSourceLanguages().subscribe((res) => {
-			this.sourceLanguages = res
+		this.translation.getSourceLanguages().subscribe((result) => {
+			this.sourceLanguages = result
 		})
-		this.translation.getTargetLanguages().subscribe((res) => {
-			this.targetLanguages = res
+		this.translation.getTargetLanguages().subscribe((result) => {
+			this.targetLanguages = result
 		})
 	}
 
@@ -166,6 +212,7 @@ export default class TranslateComponent {
 
 		this.translation.translate(data).subscribe(({ translations }) => {
 			this.translationResult = translations[0].text
+			this.showResult = true
 		})
 	}
 }
