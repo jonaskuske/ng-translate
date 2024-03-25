@@ -21,7 +21,7 @@ export class TranslationService {
 			.post<TranslationResult>(`${this.API_URL}/v2/translate`, data, {
 				headers: { authorization: this.settings.apiKey },
 			})
-			.pipe(tap((result) => addToHistory && this.history.addEntry(result)))
+			.pipe(tap((result) => addToHistory && this.history.addEntry(result, data)))
 	}
 
 	#langNameMap = new Map<string, string>(JSON.parse(localStorage.getItem("lang_names") || "[]"))

@@ -5045,6 +5045,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"idb@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "idb@npm:8.0.0"
+  checksum: 10c0/d27547e03939d3d269cea38c3d4528569621ec134c717ebfc1ff816dce18e4f77372dba1d930384a9949ac56dc600e3790f98f1812a4164004e71fec302ee491
+  languageName: node
+  linkType: hard
+
 "ieee754@npm:^1.1.13":
   version: 1.2.1
   resolution: "ieee754@npm:1.2.1"
@@ -6053,6 +6060,7 @@ __metadata:
     "@angular/router": "npm:^17.3.0"
     "@db-ui/core": "npm:^2.18.2"
     "@db-ui/ngx-elements-enterprise": "npm:^0.28.0"
+    idb: "npm:^8.0.0"
     rxjs: "npm:~7.8.0"
     tslib: "npm:^2.3.0"
     typescript: "npm:~5.4.2"
