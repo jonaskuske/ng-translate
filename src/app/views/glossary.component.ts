@@ -7,6 +7,7 @@ import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
 	standalone: true,
 	imports: [RouterOutlet, RouterModule, DBUIElementsModule],
 	template: `
+		<!--
 		<db-headline variant="2">Neuer Eintrag</db-headline>
 
 		<div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
@@ -32,6 +33,8 @@ import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
 		</div>
 
 		<db-table density="large" border="horizontal" [attr.tabledata]="data" />
+-->
+		<p>Diese Funktion ist noch nicht verfügbar.</p>
 	`,
 	styles: [
 		`

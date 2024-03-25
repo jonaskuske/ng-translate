@@ -9,7 +9,7 @@ import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
 	template: `
 		<db-page>
 			<db-header slot="header">
-				<db-brand src="/assets/images/logo.svg">DeepL Translate</db-brand>
+				<db-brand src="/assets/images/logo.svg">Translate</db-brand>
 				<db-mainnavigation>
 					<li>
 						<db-link
@@ -55,7 +55,7 @@ import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
 				<router-outlet />
 			</div>
 
-			<db-footer slot="footer" copyright border>
+			<db-footer slot="footer" border>
 				<db-metanavigation style="margin-left: auto;">
 					<db-link
 						routerLinkActive
@@ -83,6 +83,4 @@ import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
 		`,
 	],
 })
-export class AppComponent {
-	title = "DeepL Translate"
-}
+export class AppComponent {}

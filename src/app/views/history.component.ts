@@ -12,7 +12,7 @@ import { HistoryService } from "../history.service"
 		<db-headline variant="2">Letze Übersetzungen</db-headline>
 		<db-cards>
 			@for (item of history.getEntries(); track $index) {
-			<db-card header="24.03.2024" [content]="item.translations[0].text" />
+			<db-card [attr.header]="$index" [content]="item.translations[0].text" />
 			}
 		</db-cards>
 		<div class="flex justify-center" style="margin: 1rem 0;">

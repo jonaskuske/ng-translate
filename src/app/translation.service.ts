@@ -3,21 +3,8 @@ import { Injectable } from "@angular/core"
 import { Observable, delayWhen, map, of, tap } from "rxjs"
 import { HistoryService } from "./history.service"
 import { SettingsService } from "./settings.service"
-
-export type Formality = "default" | "more" | "less" | "prefer_more" | "prefer_less"
-export type TranslationData = {
-	text: string[]
-	target_lang: string
-	source_lang?: string
-	context?: string
-	formality?: Formality
-	preserve_formatting?: boolean
-	glossary_id?: string
-}
-export type Translation = { text: string; detected_source_language: string }
-export type TranslationResult = { translations: Translation[] }
-
-export type Language = { language: string; name: string }
+import { environment } from "../environments/environment"
+import { TranslationData, TranslationResult, Language, UsageData } from "./types"
 
 @Injectable({ providedIn: "root" })
 export class TranslationService {
@@ -27,7 +14,7 @@ export class TranslationService {
 		private settings: SettingsService,
 	) {}
 
-	API_URL = "http://localhost:3007"
+	API_URL = `${environment.API_HOST}/api`
 
 	translate(data: TranslationData, addToHistory = true) {
 		return this.http
@@ -45,6 +32,12 @@ export class TranslationService {
 	setLangName(language: string, name: string) {
 		this.#langNameMap.set(language, name)
 		localStorage.setItem("lang_names", JSON.stringify([...this.#langNameMap.entries()]))
+	}
+
+	getUsage() {
+		return this.http.get<UsageData>(`${this.API_URL}/v2/usage`, {
+			headers: { authorization: this.settings.apiKey },
+		})
 	}
 
 	getSourceLanguages() {

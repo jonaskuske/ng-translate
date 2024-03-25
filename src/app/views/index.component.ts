@@ -2,7 +2,8 @@ import { Component } from "@angular/core"
 import { FormsModule, NgForm } from "@angular/forms"
 import { RouterOutlet, RouterModule } from "@angular/router"
 import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
-import { Language, TranslationService } from "../translation.service"
+import { TranslationService } from "../translation.service"
+import { Language } from "../types"
 
 @Component({
 	selector: "app-translate",
@@ -40,12 +41,12 @@ import { Language, TranslationService } from "../translation.service"
 							name="adjust_formatting"
 							checked
 							label="Format/Zeichensetzung anpassen"
-						></db-checkbox>
+						/>
 					</div>
 				</div>
 
 				<div style="margin-bottom: 1rem;">
-					<db-toggle ngModel name="use_glossary" checked> Glossar verwenden</db-toggle>
+					<db-toggle ngModel name="use_glossary" disabled> Glossar verwenden </db-toggle>
 				</div>
 
 				<db-textarea ngModel name="context" rows="3" label="Kontext für die Übersetzung (Alpha):" />
