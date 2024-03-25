@@ -4,7 +4,7 @@ RUN apk add bash
 SHELL [ "/bin/bash", "-c" ]
 COPY ./.yarn ./.yarn
 COPY package.json yarn.lock .yarnrc.yml ./
-RUN yarn install --immutable
+RUN corepack enable && yarn install --immutable
 COPY . .
 RUN yarn build
 
