@@ -26,6 +26,16 @@ const ensureNoAuthGuard: CanMatchFn = (route, url) => {
 
 export const routes: Routes = [
 	{
+		path: "imprint",
+		title: "Impressum",
+		loadComponent: () => import("./views/imprint.component"),
+	},
+	{
+		path: "privacy",
+		title: "Datenschutz",
+		loadComponent: () => import("./views/privacy.component"),
+	},
+	{
 		path: "auth",
 		title: "Anmelden",
 		canMatch: [ensureNoAuthGuard],
@@ -56,15 +66,5 @@ export const routes: Routes = [
 				loadComponent: () => import("./views/glossary.component"),
 			},
 		],
-	},
-	{
-		path: "imprint",
-		title: "Impressum",
-		loadComponent: () => import("./views/imprint.component"),
-	},
-	{
-		path: "privacy",
-		title: "Datenschutz",
-		loadComponent: () => import("./views/privacy.component"),
 	},
 ]
