@@ -4,19 +4,22 @@ import { RouterOutlet, RouterModule, Router } from "@angular/router"
 import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
 import { SettingsService } from "../settings.service"
 import { TranslationService } from "../translation.service"
-import { catchError, tap } from "rxjs"
+import { tap } from "rxjs"
 import { UsageData } from "../types"
+import { CommonModule } from "@angular/common"
 
 @Component({
 	selector: "app-settings",
 	standalone: true,
-	imports: [RouterOutlet, RouterModule, DBUIElementsModule, FormsModule],
+	imports: [RouterOutlet, RouterModule, DBUIElementsModule, FormsModule, CommonModule],
 	template: `
 		<db-headline variant="2">API Key</db-headline>
 
 		<p>
-			Verwendung: {{ usageData.character_count || "-" }} /
-			{{ usageData.character_limit || "-" }} Zeichen
+			Verwendung: {{ usageData.character_count | number }} /
+			{{ usageData.character_limit | number }} Zeichen ({{
+				usageData.character_limit / usageData.character_count / 100 | percent
+			}})
 		</p>
 
 		<form (ngSubmit)="onSubmit(f)" #f="ngForm">

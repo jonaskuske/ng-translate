@@ -51,7 +51,7 @@ import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
 				</db-mainnavigation>
 			</db-header>
 
-			<div style="padding: 2rem 1rem;">
+			<div class="flex flex-column outlet-container">
 				<router-outlet />
 			</div>
 
@@ -79,6 +79,15 @@ import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
 		`
 			:host ::ng-deep .cmp-accordion {
 				padding-right: 0;
+			}
+
+			.outlet-container {
+				padding: 2.5rem 1rem 0;
+			}
+			@media (min-width: 1090px) {
+				.outlet-container {
+					padding: 0;
+				}
 			}
 		`,
 	],

@@ -10,7 +10,7 @@ export type TranslationData = {
 	glossary_id?: string
 }
 
-export type HistoryEntry = { result: TranslationResult, data: TranslationData, date: string }
+export type HistoryEntry = { result: TranslationResult; data: TranslationData; date: Date }
 
 export type Translation = { text: string; detected_source_language: string }
 

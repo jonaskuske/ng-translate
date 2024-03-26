@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from "@angular/core"
+import { ApplicationConfig, LOCALE_ID, importProvidersFrom } from "@angular/core"
 import { provideRouter, withHashLocation, withViewTransitions } from "@angular/router"
 
 import { routes } from "./app.routes"
@@ -10,5 +10,6 @@ export const appConfig: ApplicationConfig = {
 		provideRouter(routes, withHashLocation(), withViewTransitions()),
 		importProvidersFrom(HttpClientModule),
 		TranslationService,
+		{ provide: LOCALE_ID, useValue: "de-DE" },
 	],
 }

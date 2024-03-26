@@ -11,29 +11,57 @@ import { map } from "rxjs"
 	standalone: true,
 	imports: [RouterOutlet, RouterModule, DBUIElementsModule, CommonModule],
 	template: `
-		<db-headline variant="2">Letze Übersetzungen</db-headline>
+		<db-headline variant="2">Letzte Übersetzungen</db-headline>
 		<db-cards>
-			@for (item of (entries | async); track $index) {
+			@for (item of (entries | async); track item.date) {
 			<db-card>
 				<db-headline>
 					{{ item.result.translations[0].detected_source_language }}
 					→
 					{{ item.data.target_lang }}
+					<span class="date">{{ item.date | date : "short" }}</span>
 				</db-headline>
-				<p>{{ item.result.translations[0].text | slice : 0 : 400 }}</p>
+				<p style="white-space: pre-line;">
+					{{ item.result.translations[0].text | slice : 0 : 250 }}
+				</p>
 			</db-card>
 			}
 		</db-cards>
-		<!-- <div class="flex justify-center" style="margin: 1rem 0;">
+		<div class="flex justify-center" style="margin-top: auto; padding-top: 1rem;">
 			<db-pagination
 				[attr.currentpage]="currentPage | async"
-				[attr.pages]="10 || (pages | async)"
-				count="2"
+				[attr.pages]="pages | async"
+				count="3"
 				(dbChange)="log($event)"
 			/>
-		</div> -->
+		</div>
 	`,
-	styles: [],
+	styles: [
+		`
+			:host {
+				display: contents;
+			}
+			:host ::ng-deep db-pagination[pages="1"] ol li:nth-child(3) {
+				display: none;
+			}
+			:host ::ng-deep db-pagination[pages="1"] ol li:first-child,
+			:host ::ng-deep db-pagination[pages="1"] ol li:last-child {
+				opacity: 0.25;
+			}
+			:host ::ng-deep db-card h3 {
+				display: flex;
+			}
+			:host ::ng-deep db-card figcaption {
+				width: 100%;
+			}
+			.date {
+				margin-left: auto;
+				font-size: 12px;
+				align-self: center;
+				color: var(--db-color-cool-gray-500);
+			}
+		`,
+	],
 })
 export default class HistoryComponent {
 	title = "History"
