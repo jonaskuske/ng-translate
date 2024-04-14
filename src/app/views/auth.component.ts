@@ -25,7 +25,13 @@ import { tap } from "rxjs"
 			<db-button [attr.disabled]="f.invalid" variant="primary" type="submit">Bestätigen</db-button>
 		</form>
 	`,
-	styles: [],
+	styles: [
+		`
+			:host ::ng-deep .elm-label.sc-db-input {
+				max-width: calc(100% - 1rem);
+			}
+		`,
+	],
 })
 export default class AuthComponent {
 	constructor(
