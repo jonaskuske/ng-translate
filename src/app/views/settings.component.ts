@@ -54,7 +54,13 @@ import { CommonModule } from "@angular/common"
 			Dunkler Modus <span style="font-size:10px">(bald verfügbar)</span>
 		</db-toggle>
 	`,
-	styles: [],
+	styles: [
+		`
+			:host ::ng-deep .elm-label.sc-db-input {
+				max-width: calc(100% - 1rem);
+			}
+		`,
+	],
 })
 export default class SettingsComponent {
 	usageData: UsageData = { character_count: 0, character_limit: 0 }
