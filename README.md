@@ -1,7 +1,6 @@
 <h1 align=center>ng-translate</h1>
 
-<p align=center>🔤 b
-frontend for the DeepL translation API, built to circumvent the character limit of the DeepL free plan and to experience with the DB UI design system.</p>
+<p align=center>🔤 a frontend for the DeepL translation API</p>
 
 <br><br>
 
