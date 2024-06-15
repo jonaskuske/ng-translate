@@ -2,19 +2,22 @@
 	"name": "ng-translate",
 	"version": "0.0.0",
 	"private": true,
+	"type": "module",
 	"packageManager": "yarn@4.3.0",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
 		"build": "ng build",
 		"watch": "ng build --watch --configuration development",
-		"postinstall": "husky || true"
+		"postinstall": "husky || true",
+		"lint": "ng lint"
 	},
 	"lint-staged": {
-		"*.{cjs,mjs,js,jsx,cts,mts,ts,tsx}": [
+		"*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,html}": [
+			"eslint --fix",
 			"prettier --write"
 		],
-		"*.{css,html,md,json,webmanifest}": "prettier --write"
+		"*.{css,md,json,yml,webmanifest}": "prettier --write"
 	},
 	"prettier": {
 		"arrowParens": "always",
@@ -40,13 +43,18 @@
 		"zone.js": "~0.14.7"
 	},
 	"devDependencies": {
+		"@angular-eslint/builder": "^18.0.1",
 		"@angular/build": "^18.0.4",
 		"@angular/cli": "^18.0.4",
 		"@angular/compiler-cli": "^18.0.3",
+		"@eslint/js": "^9.5.0",
+		"angular-eslint": "18.0.1",
+		"eslint": "^9.3.0",
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.7",
 		"prettier": "^3.3.2",
-		"typescript": "~5.4.5"
+		"typescript": "~5.4.5",
+		"typescript-eslint": "^8.0.0-alpha.30"
 	},
 	"dependenciesMeta": {
 		"@angular/cli@18.0.4": {

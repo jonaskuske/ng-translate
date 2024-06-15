@@ -1,11 +1,6 @@
-import { AsyncPipe, CommonModule, DatePipe, NgFor } from '@angular/common'
+import { CommonModule } from '@angular/common'
 import { Component } from '@angular/core'
-import {
-	RouterOutlet,
-	RouterModule,
-	ActivatedRoute,
-	Router,
-} from '@angular/router'
+import { RouterOutlet, RouterModule, Router } from '@angular/router'
 import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
 import { HistoryService } from '../history.service'
 import { HistoryEntry } from '../types'

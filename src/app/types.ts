@@ -5,7 +5,7 @@ export type Formality =
 	| 'prefer_more'
 	| 'prefer_less'
 
-export type TranslationData = {
+export interface TranslationData {
 	text: string[]
 	target_lang: string
 	source_lang?: string
@@ -15,16 +15,27 @@ export type TranslationData = {
 	glossary_id?: string
 }
 
-export type HistoryEntry = {
+export interface HistoryEntry {
 	result: TranslationResult
 	data: TranslationData
 	date: Date
 }
 
-export type Translation = { text: string; detected_source_language: string }
+export interface Translation {
+	text: string
+	detected_source_language: string
+}
 
-export type TranslationResult = { translations: Translation[] }
+export interface TranslationResult {
+	translations: Translation[]
+}
 
-export type Language = { language: string; name: string }
+export interface Language {
+	language: string
+	name: string
+}
 
-export type UsageData = { character_count: number; character_limit: number }
+export interface UsageData {
+	character_count: number
+	character_limit: number
+}

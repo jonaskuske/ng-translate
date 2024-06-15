@@ -3,7 +3,7 @@ import { CanMatchFn, Router, Routes } from '@angular/router'
 import { TranslationService } from './translation.service'
 import { catchError, map, of } from 'rxjs'
 
-const ensureAuthGuard: CanMatchFn = (route, url) => {
+const ensureAuthGuard: CanMatchFn = () => {
 	const translation = inject(TranslationService)
 	const router = inject(Router)
 	const from = encodeURIComponent(router.routerState.snapshot.url)
@@ -13,7 +13,7 @@ const ensureAuthGuard: CanMatchFn = (route, url) => {
 		catchError(() => of(router.parseUrl(`/auth?from=${from}`))),
 	)
 }
-const ensureNoAuthGuard: CanMatchFn = (route, url) => {
+const ensureNoAuthGuard: CanMatchFn = () => {
 	const translation = inject(TranslationService)
 	const router = inject(Router)
 	const from = router.routerState.snapshot.root.queryParamMap.get('from')

@@ -1,11 +1,6 @@
 import { Component } from '@angular/core'
 import { FormsModule, NgForm } from '@angular/forms'
-import {
-	RouterOutlet,
-	RouterModule,
-	Router,
-	ActivatedRoute,
-} from '@angular/router'
+import { RouterOutlet, RouterModule, Router } from '@angular/router'
 import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
 import { SettingsService } from '../settings.service'
 import { TranslationService } from '../translation.service'
@@ -61,7 +56,7 @@ export default class AuthComponent {
 			.getUsage()
 			.pipe(
 				tap({
-					next: (value) => {
+					next: () => {
 						this.router.navigateByUrl(from || '/', { replaceUrl: true })
 					},
 					error: (err) => {

@@ -2,7 +2,9 @@
 	"$schema": ".yarn/unplugged/@angular-cli-npm-18.0.4-c1a71c0cfe/node_modules/@angular/cli/lib/config/schema.json",
 	"version": 1,
 	"cli": {
-		"packageManager": "yarn"
+		"packageManager": "yarn",
+		"analytics": false,
+		"schematicCollections": ["@angular-eslint/schematics"]
 	},
 	"newProjectRoot": "projects",
 	"projects": {
@@ -101,6 +103,16 @@
 					"builder": "@angular/build:extract-i18n",
 					"options": {
 						"buildTarget": "ng-translate:build"
+					}
+				},
+				"lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": [
+							"*.{js,cjs,mjs,ts,cts,mts}",
+							"src/**/*.{js,cjs,mjs,ts,cts,mts}",
+							"src/**/*.html"
+						]
 					}
 				}
 			}

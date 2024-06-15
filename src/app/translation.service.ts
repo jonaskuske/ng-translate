@@ -73,7 +73,7 @@ export class TranslationService {
 			)
 	}
 
-	private translateLangNames(languages: Language[]): Observable<any> {
+	private translateLangNames(languages: Language[]): Observable<unknown> {
 		const untranslated = languages.filter(
 			(l) => !this.#langNameMap.has(l.language),
 		)
