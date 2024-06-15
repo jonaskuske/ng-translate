@@ -553,7 +553,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@db-ui/core@npm:^2.16.0, @db-ui/core@npm:^2.18.2":
+"@db-ui/core@npm:^2.19.2":
   version: 2.19.2
   resolution: "@db-ui/core@npm:2.19.2"
   dependencies:
@@ -563,22 +563,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@db-ui/elements-enterprise@npm:0.28.0":
-  version: 0.28.0
-  resolution: "@db-ui/elements-enterprise@npm:0.28.0"
+"@db-ui/elements-enterprise@npm:0.29.2":
+  version: 0.29.2
+  resolution: "@db-ui/elements-enterprise@npm:0.29.2"
   dependencies:
-    "@db-ui/core": "npm:^2.16.0"
-  checksum: 10c0/879e190f1ec90637b8b888265a264f721726a1d6d2abd5489f6a21ffe2919ddab804a5c704f1d15e6a8e544bbaccc324f57dbd1f549c5e2bbee039df2218472b
+    "@db-ui/core": "npm:^2.19.2"
+  checksum: 10c0/acac51c021fc0481dc3f9292ca7c338c6bf28e24696ec175e541244954ef9ccbbd82e5ded5388a67e5dee78dac596bd3d5939c5a8dae35f86598e4b46601472f
   languageName: node
   linkType: hard
 
-"@db-ui/ngx-elements-enterprise@npm:^0.28.0":
-  version: 0.28.0
-  resolution: "@db-ui/ngx-elements-enterprise@npm:0.28.0"
+"@db-ui/ngx-elements-enterprise@npm:^0.29.2":
+  version: 0.29.2
+  resolution: "@db-ui/ngx-elements-enterprise@npm:0.29.2"
   dependencies:
-    "@db-ui/elements-enterprise": "npm:0.28.0"
+    "@db-ui/elements-enterprise": "npm:0.29.2"
     tslib: "npm:^2.6.2"
-  checksum: 10c0/ca0f530abeef470bab1b96c360c287a7a8b256c13c5b56b9a581857ca330d2e7a76691d26f4c62fbcb1f89bf4ad5dff24ca15f8841e3a2f0d1f8fececdbd7e30
+  checksum: 10c0/4beeb773d539a563f450b1b89282017e33228904d5c29e733fce51f35e560bfe8a37a9932c9d5b7de1c8bf67ea0dfc4ef75818b93f3c56efc795dc73d87d4b9c
   languageName: node
   linkType: hard
 
@@ -3262,16 +3262,16 @@ __metadata:
     "@angular/platform-browser": "npm:^18.0.3"
     "@angular/platform-browser-dynamic": "npm:^18.0.3"
     "@angular/router": "npm:^18.0.3"
-    "@db-ui/core": "npm:^2.18.2"
-    "@db-ui/ngx-elements-enterprise": "npm:^0.28.0"
+    "@db-ui/core": "npm:^2.19.2"
+    "@db-ui/ngx-elements-enterprise": "npm:^0.29.2"
     husky: "npm:^9.0.11"
     idb: "npm:^8.0.0"
     lint-staged: "npm:^15.2.7"
     prettier: "npm:^3.3.2"
-    rxjs: "npm:~7.8.0"
-    tslib: "npm:^2.3.0"
-    typescript: "npm:~5.4.2"
-    zone.js: "npm:~0.14.3"
+    rxjs: "npm:~7.8.1"
+    tslib: "npm:^2.6.3"
+    typescript: "npm:~5.4.5"
+    zone.js: "npm:~0.14.7"
   dependenciesMeta:
     "@angular/cli@18.0.4":
       unplugged: true
@@ -3974,7 +3974,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:7.8.1, rxjs@npm:^7.8.1, rxjs@npm:~7.8.0":
+"rxjs@npm:7.8.1, rxjs@npm:^7.8.1, rxjs@npm:~7.8.1":
   version: 7.8.1
   resolution: "rxjs@npm:7.8.1"
   dependencies:
@@ -4354,7 +4354,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.6.2":
+"tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.6.2, tslib@npm:^2.6.3":
   version: 2.6.3
   resolution: "tslib@npm:2.6.3"
   checksum: 10c0/2598aef53d9dbe711af75522464b2104724d6467b26a60f2bdac8297d2b5f1f6b86a71f61717384aa8fd897240467aaa7bcc36a0700a0faf751293d1331db39a
@@ -4379,7 +4379,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:~5.4.2":
+"typescript@npm:~5.4.5":
   version: 5.4.5
   resolution: "typescript@npm:5.4.5"
   bin:
@@ -4389,7 +4389,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A~5.4.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A~5.4.5#optional!builtin<compat/typescript>":
   version: 5.4.5
   resolution: "typescript@patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"
   bin:
@@ -4655,7 +4655,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zone.js@npm:~0.14.3":
+"zone.js@npm:~0.14.7":
   version: 0.14.7
   resolution: "zone.js@npm:0.14.7"
   checksum: 10c0/5a5fccb78ea4653ccf3ad5c11448ffa4e005b50a0fd43da713fcc19584746000ea889ca45163d2e6e18e3a4ed7be42cdbc0dbb4dcb28449f02d23408696668cc
