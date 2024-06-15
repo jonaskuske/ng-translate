@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core"
+import { Injectable } from '@angular/core'
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class SettingsService {
 	constructor() {}
 
 	get apiKey() {
-		return localStorage.getItem("api_key") || ""
+		return localStorage.getItem('api_key') || ''
 	}
 	set apiKey(key: string) {
-		localStorage.setItem("api_key", key)
+		localStorage.setItem('api_key', key)
 	}
 }

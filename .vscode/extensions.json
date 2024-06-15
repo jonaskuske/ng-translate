@@ -1,7 +1,8 @@
 {
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
-  "recommendations": [
-    "angular.ng-template",
-    "arcanis.vscode-zipfs"
-  ]
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
+	"recommendations": [
+		"angular.ng-template",
+		"arcanis.vscode-zipfs",
+		"esbenp.prettier-vscode"
+	]
 }

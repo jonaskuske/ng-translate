@@ -17,6 +17,3 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Deploy
 
 You can use the provided Dockerfile to build a deployable image, based on Caddy Webserver. The provided Caddyfile takes care of proxying API requests to the right DeepL API endpoint.
-
-
-

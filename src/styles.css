@@ -1,27 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 .mr-auto {
-  margin-right: auto;
+	margin-right: auto;
 }
 .ml-auto {
-  margin-left: auto;
+	margin-left: auto;
 }
 
 .flex {
-  display: flex;
+	display: flex;
 }
 .items-center {
-  align-items: center;
+	align-items: center;
 }
 .justify-center {
-  justify-content: center;
+	justify-content: center;
 }
 .flex-column {
-  flex-direction: column;
+	flex-direction: column;
 }
 .flex-grow {
-  flex-grow: 1;
+	flex-grow: 1;
 }
 
 .grid {
-  display: grid;
+	display: grid;
 }

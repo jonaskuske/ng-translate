@@ -1,9 +1,9 @@
-import { Component } from "@angular/core"
-import { RouterOutlet, RouterModule } from "@angular/router"
-import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
+import { Component } from '@angular/core'
+import { RouterOutlet, RouterModule } from '@angular/router'
+import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
 
 @Component({
-	selector: "app-root",
+	selector: 'app-root',
 	standalone: true,
 	imports: [RouterOutlet, RouterModule, DBUIElementsModule],
 	template: `

@@ -1,7 +1,7 @@
-import { inject } from "@angular/core"
-import { CanMatchFn, Router, Routes } from "@angular/router"
-import { TranslationService } from "./translation.service"
-import { catchError, map, of } from "rxjs"
+import { inject } from '@angular/core'
+import { CanMatchFn, Router, Routes } from '@angular/router'
+import { TranslationService } from './translation.service'
+import { catchError, map, of } from 'rxjs'
 
 const ensureAuthGuard: CanMatchFn = (route, url) => {
 	const translation = inject(TranslationService)
@@ -16,54 +16,54 @@ const ensureAuthGuard: CanMatchFn = (route, url) => {
 const ensureNoAuthGuard: CanMatchFn = (route, url) => {
 	const translation = inject(TranslationService)
 	const router = inject(Router)
-	const from = router.routerState.snapshot.root.queryParamMap.get("from")
+	const from = router.routerState.snapshot.root.queryParamMap.get('from')
 
 	return translation.getUsage().pipe(
-		map(() => router.parseUrl(from || "/")),
+		map(() => router.parseUrl(from || '/')),
 		catchError(() => of(true)),
 	)
 }
 
 export const routes: Routes = [
 	{
-		path: "imprint",
-		title: "Impressum",
-		loadComponent: () => import("./views/imprint.component"),
+		path: 'imprint',
+		title: 'Impressum',
+		loadComponent: () => import('./views/imprint.component'),
 	},
 	{
-		path: "privacy",
-		title: "Datenschutz",
-		loadComponent: () => import("./views/privacy.component"),
+		path: 'privacy',
+		title: 'Datenschutz',
+		loadComponent: () => import('./views/privacy.component'),
 	},
 	{
-		path: "auth",
-		title: "Anmelden",
+		path: 'auth',
+		title: 'Anmelden',
 		canMatch: [ensureNoAuthGuard],
-		loadComponent: () => import("./views/auth.component"),
+		loadComponent: () => import('./views/auth.component'),
 	},
 	{
-		path: "",
+		path: '',
 		canMatch: [ensureAuthGuard],
 		children: [
 			{
-				path: "",
-				title: "Translate",
-				loadComponent: () => import("./views/index.component"),
+				path: '',
+				title: 'Translate',
+				loadComponent: () => import('./views/index.component'),
 			},
 			{
-				path: "history",
-				title: "Verlauf",
-				loadComponent: () => import("./views/history.component"),
+				path: 'history',
+				title: 'Verlauf',
+				loadComponent: () => import('./views/history.component'),
 			},
 			{
-				path: "settings",
-				title: "Einstellungen",
-				loadComponent: () => import("./views/settings.component"),
+				path: 'settings',
+				title: 'Einstellungen',
+				loadComponent: () => import('./views/settings.component'),
 			},
 			{
-				path: "glossary",
-				title: "Glossar",
-				loadComponent: () => import("./views/glossary.component"),
+				path: 'glossary',
+				title: 'Glossar',
+				loadComponent: () => import('./views/glossary.component'),
 			},
 		],
 	},

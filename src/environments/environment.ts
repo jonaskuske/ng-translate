@@ -1,3 +1,3 @@
 export const environment = {
-	API_HOST: "",
+	API_HOST: '',
 }

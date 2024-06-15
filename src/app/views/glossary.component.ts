@@ -1,9 +1,9 @@
-import { Component } from "@angular/core"
-import { RouterOutlet, RouterModule } from "@angular/router"
-import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
+import { Component } from '@angular/core'
+import { RouterOutlet, RouterModule } from '@angular/router'
+import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
 
 @Component({
-	selector: "app-glossary",
+	selector: 'app-glossary',
 	standalone: true,
 	imports: [RouterOutlet, RouterModule, DBUIElementsModule],
 	template: `
@@ -45,20 +45,20 @@ import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
 	],
 })
 export default class GlossaryComponent {
-	title = "Glossary"
+	title = 'Glossary'
 	data = JSON.stringify({
-		caption: "Einträge für Deutsch → Englisch",
-		headers: ["Ausgangstext", "Übersetzung"],
-		rowTitle: "#",
-		rowTitles: ["1", "2", "3", "4", "5"],
+		caption: 'Einträge für Deutsch → Englisch',
+		headers: ['Ausgangstext', 'Übersetzung'],
+		rowTitle: '#',
+		rowTitles: ['1', '2', '3', '4', '5'],
 		rows: [
 			{
-				Ausgangstext: [null, "Einse"],
-				Übersetzung: [null, "One"],
+				Ausgangstext: [null, 'Einse'],
+				Übersetzung: [null, 'One'],
 			},
 			{
-				Ausgangstext: [null, "Zweie"],
-				Übersetzung: [null, "Two"],
+				Ausgangstext: [null, 'Zweie'],
+				Übersetzung: [null, 'Two'],
 			},
 		],
 	})

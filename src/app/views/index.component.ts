@@ -1,12 +1,12 @@
-import { Component } from "@angular/core"
-import { FormsModule, NgForm } from "@angular/forms"
-import { RouterOutlet, RouterModule } from "@angular/router"
-import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
-import { TranslationService } from "../translation.service"
-import { Language } from "../types"
+import { Component } from '@angular/core'
+import { FormsModule, NgForm } from '@angular/forms'
+import { RouterOutlet, RouterModule } from '@angular/router'
+import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
+import { TranslationService } from '../translation.service'
+import { Language } from '../types'
 
 @Component({
-	selector: "app-translate",
+	selector: 'app-translate',
 	standalone: true,
 	imports: [RouterOutlet, RouterModule, DBUIElementsModule, FormsModule],
 	template: `
@@ -17,24 +17,48 @@ import { Language } from "../types"
 			[class.show-result]="showResult"
 			style="grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem;"
 		>
-			<db-select ngModel name="source_lang" label="Ausgangssprache" style="grid-column: 1">
+			<db-select
+				ngModel
+				name="source_lang"
+				label="Ausgangssprache"
+				style="grid-column: 1"
+			>
 				<option selected value="">Automatisch erkennen</option>
 				@for (lang of sourceLanguages; track lang) {
-				<option [value]="lang.language">{{ lang.name }}</option>
+					<option [value]="lang.language">{{ lang.name }}</option>
 				}
 			</db-select>
-			<db-select required ngModel name="target_lang" label="Zielsprache" style="grid-column: 2">
+			<db-select
+				required
+				ngModel
+				name="target_lang"
+				label="Zielsprache"
+				style="grid-column: 2"
+			>
 				<option value="" selected disabled>Auswählen...</option>
 				@for (lang of targetLanguages; track lang) {
-				<option [value]="lang.language">{{ lang.name }}</option>
+					<option [value]="lang.language">{{ lang.name }}</option>
 				}
 			</db-select>
 			<db-accordion summary="Erweiterte Optionen" style="grid-column: span 2;">
 				<div class="flex accordion-row" style="gap: 1rem; margin-bottom: 1rem;">
 					<span>Förmlichkeit:</span>
-					<db-radio checked name="formality" label="Standard" value="default"></db-radio>
-					<db-radio name="formality" label="Förmlicher" value="prefer_more"></db-radio>
-					<db-radio name="formality" label="Weniger förmlich" value="prefer_less"></db-radio>
+					<db-radio
+						checked
+						name="formality"
+						label="Standard"
+						value="default"
+					></db-radio>
+					<db-radio
+						name="formality"
+						label="Förmlicher"
+						value="prefer_more"
+					></db-radio>
+					<db-radio
+						name="formality"
+						label="Weniger förmlich"
+						value="prefer_less"
+					></db-radio>
 
 					<db-checkbox
 						ngModel
@@ -45,13 +69,23 @@ import { Language } from "../types"
 				</div>
 
 				<div style="margin-bottom: 1rem;">
-					<db-toggle ngModel name="use_glossary" disabled> Glossar verwenden </db-toggle>
+					<db-toggle ngModel name="use_glossary" disabled>
+						Glossar verwenden
+					</db-toggle>
 				</div>
 
-				<db-textarea ngModel name="context" rows="3" label="Kontext für die Übersetzung (Alpha):" />
+				<db-textarea
+					ngModel
+					name="context"
+					rows="3"
+					label="Kontext für die Übersetzung (Alpha):"
+				/>
 			</db-accordion>
 
-			<div class="text flex flex-column" style="height: clamp(275px, 50vh, 475px)">
+			<div
+				class="text flex flex-column"
+				style="height: clamp(275px, 50vh, 475px)"
+			>
 				<div class="flex items-center" style="gap: 0.5rem;">
 					<db-headline variant="3" class="mr-auto">Ausgangstext</db-headline>
 				</div>
@@ -65,7 +99,10 @@ import { Language } from "../types"
 					label="Zu übersetzender Text"
 				/>
 			</div>
-			<div class="result flex flex-column" style="height: clamp(275px, 50vh, 475px);">
+			<div
+				class="result flex flex-column"
+				style="height: clamp(275px, 50vh, 475px);"
+			>
 				<div class="flex items-center" style="gap: 0.5rem;">
 					<db-headline variant="3" class="mr-auto">Resultat</db-headline>
 					<db-button
@@ -128,7 +165,7 @@ import { Language } from "../types"
 			}
 
 			#result:empty::before {
-				content: "🗨️";
+				content: '🗨️';
 				font-size: 7rem;
 				margin: auto;
 			}
@@ -173,7 +210,7 @@ import { Language } from "../types"
 	],
 })
 export default class TranslateComponent {
-	translationResult = ""
+	translationResult = ''
 	copySuccess = false
 
 	sourceLanguages: Language[] = []

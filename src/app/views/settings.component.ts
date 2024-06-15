@@ -1,17 +1,23 @@
-import { Component } from "@angular/core"
-import { FormsModule, NgForm } from "@angular/forms"
-import { RouterOutlet, RouterModule, Router } from "@angular/router"
-import { DBUIElementsModule } from "@db-ui/ngx-elements-enterprise/dist/lib"
-import { SettingsService } from "../settings.service"
-import { TranslationService } from "../translation.service"
-import { tap } from "rxjs"
-import { UsageData } from "../types"
-import { CommonModule } from "@angular/common"
+import { Component } from '@angular/core'
+import { FormsModule, NgForm } from '@angular/forms'
+import { RouterOutlet, RouterModule, Router } from '@angular/router'
+import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
+import { SettingsService } from '../settings.service'
+import { TranslationService } from '../translation.service'
+import { tap } from 'rxjs'
+import { UsageData } from '../types'
+import { CommonModule } from '@angular/common'
 
 @Component({
-	selector: "app-settings",
+	selector: 'app-settings',
 	standalone: true,
-	imports: [RouterOutlet, RouterModule, DBUIElementsModule, FormsModule, CommonModule],
+	imports: [
+		RouterOutlet,
+		RouterModule,
+		DBUIElementsModule,
+		FormsModule,
+		CommonModule,
+	],
 	template: `
 		<db-headline variant="2">API Key</db-headline>
 
@@ -43,7 +49,12 @@ import { CommonModule } from "@angular/common"
 				>
 					API Key speichern
 				</db-button>
-				<db-button size="small" variant="secondary-outline" type="button" (click)="onReset(f)">
+				<db-button
+					size="small"
+					variant="secondary-outline"
+					type="button"
+					(click)="onReset(f)"
+				>
 					API Key zurücksetzen
 				</db-button>
 			</div>
@@ -83,9 +94,9 @@ export default class SettingsComponent {
 
 	onReset(form: NgForm) {
 		form.resetForm()
-		this.settings.apiKey = ""
+		this.settings.apiKey = ''
 		this.router.navigateByUrl(this.router.routerState.snapshot.url, {
-			onSameUrlNavigation: "reload",
+			onSameUrlNavigation: 'reload',
 			replaceUrl: true,
 		})
 	}
