@@ -18,7 +18,7 @@ import { CommonModule } from "@angular/common"
 		<p>
 			Verwendung: {{ usageData.character_count | number }} /
 			{{ usageData.character_limit | number }} Zeichen ({{
-				usageData.character_count / usageData.character_limit | percent
+				usageData.character_count / usageData.character_limit | percent:'1.0-1'
 			}})
 		</p>
 
