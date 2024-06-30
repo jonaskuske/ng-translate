@@ -1,4 +1,10 @@
-import { Component, effect, inject, signal } from '@angular/core'
+import {
+	ChangeDetectionStrategy,
+	Component,
+	effect,
+	inject,
+	signal,
+} from '@angular/core'
 import { RouterOutlet, RouterModule } from '@angular/router'
 import {
 	DBBrand,
@@ -25,6 +31,7 @@ import { SettingsService } from './settings.service'
 		NavigationContentDirective,
 		MetaNavigationDirective,
 	],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<div class="db-page" data-variant="fixed" data-fade-in="true">
 			<db-header [drawerOpen]="drawerOpen()" (onToggle)="toggle($event)">

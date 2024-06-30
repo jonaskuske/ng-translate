@@ -1,4 +1,9 @@
-import { Component, inject, signal } from '@angular/core'
+import {
+	ChangeDetectionStrategy,
+	Component,
+	inject,
+	signal,
+} from '@angular/core'
 import { FormsModule, NgForm } from '@angular/forms'
 import { RouterOutlet, RouterModule, Router } from '@angular/router'
 import {
@@ -22,6 +27,7 @@ import { TranslationService } from '../translation.service'
 		FormsModule,
 		DBNotification,
 	],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<db-section width="medium">
 			@if (errorMessage(); as message) {

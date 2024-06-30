@@ -1,6 +1,12 @@
-import { ApplicationConfig, inject, LOCALE_ID } from '@angular/core'
+import {
+	ApplicationConfig,
+	inject,
+	LOCALE_ID,
+	provideExperimentalZonelessChangeDetection,
+} from '@angular/core'
 import {
 	provideRouter,
+	withComponentInputBinding,
 	withHashLocation,
 	withViewTransitions,
 } from '@angular/router'
@@ -10,6 +16,7 @@ import {
 	HttpHandlerFn,
 	HttpRequest,
 	provideHttpClient,
+	withFetch,
 	withInterceptors,
 } from '@angular/common/http'
 import { TranslationService } from './translation.service'
@@ -29,8 +36,14 @@ export function authInterceptor(
 
 export const appConfig: ApplicationConfig = {
 	providers: [
-		provideRouter(routes, withHashLocation(), withViewTransitions()),
-		provideHttpClient(withInterceptors([authInterceptor])),
+		provideExperimentalZonelessChangeDetection(),
+		provideRouter(
+			routes,
+			withHashLocation(),
+			withViewTransitions(),
+			withComponentInputBinding(),
+		),
+		provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
 		TranslationService,
 		{ provide: LOCALE_ID, useValue: 'de-DE' },
 	],

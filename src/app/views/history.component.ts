@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, inject } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import { RouterOutlet, RouterModule, Router } from '@angular/router'
 import { HistoryService } from '../history.service'
 import { DBCard, DBSection } from '@db-ui/ngx-components'
@@ -8,6 +8,7 @@ import { DBCard, DBSection } from '@db-ui/ngx-components'
 	selector: 'app-history',
 	standalone: true,
 	imports: [RouterOutlet, RouterModule, CommonModule, DBSection, DBCard],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<db-section width="large" data-density="functional">
 			<h2>Letzte Übersetzungen</h2>

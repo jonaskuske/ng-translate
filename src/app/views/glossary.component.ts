@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { RouterOutlet, RouterModule } from '@angular/router'
 import { DBSection } from '@db-ui/ngx-components'
 
@@ -6,6 +6,7 @@ import { DBSection } from '@db-ui/ngx-components'
 	selector: 'app-glossary',
 	standalone: true,
 	imports: [RouterOutlet, RouterModule, DBSection],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<db-section width="large">
 			<p>Diese Funktion ist noch nicht verfügbar.</p>

@@ -1,4 +1,9 @@
-import { Component, inject, signal } from '@angular/core'
+import {
+	ChangeDetectionStrategy,
+	Component,
+	inject,
+	signal,
+} from '@angular/core'
 import { FormsModule, NgForm } from '@angular/forms'
 import { RouterOutlet, RouterModule } from '@angular/router'
 import { TranslationService } from '../translation.service'
@@ -33,6 +38,7 @@ import { CommonModule } from '@angular/common'
 		DBAccordionItem,
 		DBSwitch,
 	],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<db-section width="large">
 			<form
@@ -135,6 +141,7 @@ import { CommonModule } from '@angular/common'
 						ngModel
 						name="text"
 						[required]="true"
+						(input)="form.controls['text'].setValue($event.target.value)"
 						label="Zu übersetzender Text"
 						variant="hidden"
 						invalidMessage=" "
