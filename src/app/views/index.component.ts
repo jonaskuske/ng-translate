@@ -62,7 +62,9 @@ const SOURCE_LANG_AUTO = '_auto_'
 					label="Ausgangssprache"
 					style="grid-column: 1"
 				>
-					<option value="_auto_">Automatisch erkennen</option>
+					<option [value]="SOURCE_LANG_AUTO" selected>
+						Automatisch erkennen
+					</option>
 					@for (lang of getSourceLanguages$ | async; track lang.language) {
 						<option [value]="lang.language">{{ lang.name }}</option>
 					}
@@ -270,6 +272,8 @@ const SOURCE_LANG_AUTO = '_auto_'
 })
 export default class TranslateComponent {
 	private readonly translation = inject(TranslationService)
+
+	readonly SOURCE_LANG_AUTO = SOURCE_LANG_AUTO
 
 	readonly getSourceLanguages$ = this.translation.getSourceLanguages()
 	readonly getTargetLanguages$ = this.translation.getTargetLanguages()
