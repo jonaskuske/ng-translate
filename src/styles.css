@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.db-checkbox input {
+	position: relative;
+}
+
 .mr-auto {
 	margin-right: auto;
 }

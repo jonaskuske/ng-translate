@@ -95,29 +95,30 @@ const SOURCE_LANG_AUTO = '_auto_'
 							<db-radio
 								[checked]="formality() === 'default'"
 								(change)="formality.set('default')"
-								name="formality"
-								label="Standard"
 								value="default"
-							></db-radio>
+							>
+								Standard
+							</db-radio>
 							<db-radio
 								[checked]="formality() === 'prefer_more'"
 								(change)="formality.set('prefer_more')"
-								name="formality"
-								label="Förmlicher"
 								value="prefer_more"
-							></db-radio>
+							>
+								Förmlicher
+							</db-radio>
 							<db-radio
 								[checked]="formality() === 'prefer_less'"
 								(change)="formality.set('prefer_less')"
-								name="formality"
-								label="Weniger förmlich"
 								value="prefer_less"
-							></db-radio>
+							>
+								Weniger förmlich
+							</db-radio>
 
-							<db-checkbox
-								formControlName="adjust_formatting"
-								label="Format/Zeichensetzung anpassen"
-							/>
+							<db-checkbox formControlName="adjust_formatting">
+								<span style="overflow: hidden; text-overflow: ellipsis;">
+									Format/Zeichensetzung anpassen
+								</span>
+							</db-checkbox>
 						</div>
 
 						<div style="margin-bottom: var(--db-spacing-responsive-xs);">
@@ -232,9 +233,10 @@ const SOURCE_LANG_AUTO = '_auto_'
 			.accordion-row {
 				flex-direction: column;
 			}
-			.accordion-row :last-child {
+			.accordion-row > :last-child {
 				display: block;
-				margin: 1rem 0 1rem 0;
+				margin: var(--db-spacing-fixed-md) 0;
+				overflow: hidden;
 			}
 
 			.btn-new-translation,
@@ -250,6 +252,7 @@ const SOURCE_LANG_AUTO = '_auto_'
 				}
 				.accordion-row {
 					flex-direction: row;
+					align-items: center;
 				}
 				.accordion-row :last-child {
 					margin: 0 0 0 auto;
