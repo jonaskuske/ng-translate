@@ -1,18 +1,24 @@
 <h1 align=center>ng-translate</h1>
 
-<p align=center>🔤 a frontend for the DeepL translation API</p>
+<p align=center>🔤 A frontend for the DeepL translation API</p>
 
-<br><br>
+<p align=center>
+<img src="./image.png" width="600" alt="">
+</p>
 
-This project was built to circumvent the per-translation character limit of the DeepL free plan (which doesn't apply to the free API plan), experiment with the DB UI design system and try out some features of Angular 17.
+<br>
+
+This project was built to circumvent the per-translation character limit of the DeepL free plan (which doesn't apply to the free API plan), experiment with the DB UI design system and try out some features of Angular 17 & 18.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `yarn start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+Run `caddy run .` to start the proxy server that's necessary to connect to the DeepL API.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `yarn build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Deploy
 
