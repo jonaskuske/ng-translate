@@ -7,7 +7,7 @@ import {
 import {
 	provideRouter,
 	withComponentInputBinding,
-	withHashLocation,
+	withRouterConfig,
 	withViewTransitions,
 } from '@angular/router'
 import {
@@ -37,8 +37,8 @@ export const appConfig: ApplicationConfig = {
 	providers: [
 		provideRouter(
 			routes,
-			withHashLocation(),
-			withViewTransitions(),
+			withRouterConfig({ onSameUrlNavigation: 'reload' }),
+			withViewTransitions({ skipInitialTransition: true }),
 			withComponentInputBinding(),
 		),
 		provideHttpClient(withFetch(), withInterceptors([authInterceptor])),

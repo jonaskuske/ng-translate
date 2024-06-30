@@ -179,7 +179,6 @@ export default class SettingsComponent {
 		this.settings.reset()
 		await this.history.reset()
 		await this.router.navigateByUrl(this.router.routerState.snapshot.url, {
-			onSameUrlNavigation: 'reload',
 			replaceUrl: true,
 		})
 	}

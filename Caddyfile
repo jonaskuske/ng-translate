@@ -1,42 +1,42 @@
 (cors) {
-  header {
-    Access-Control-Allow-Origin "{http.request.header.Origin}"
-    Access-Control-Allow-Credentials true
-    Access-Control-Allow-Methods *
-    Access-Control-Allow-Headers DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization
-  }
-  @options method OPTIONS
-  @not-options not method OPTIONS
+	header {
+		Access-Control-Allow-Origin "{http.request.header.Origin}"
+		Access-Control-Allow-Credentials true
+		Access-Control-Allow-Methods *
+		Access-Control-Allow-Headers DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization
+	}
+	@options method OPTIONS
+	@not-options not method OPTIONS
 }
 (reverse-proxy) {
-  header_up Host {upstream_hostport}
-  header_up -X-Forwarded-Host
-  header_up -X-forwarded-For
-  header_up -X-forwarded-Proto
-  header_down -Access-Control-Allow-Origin
+	header_up Host {upstream_hostport}
+	header_up -X-Forwarded-Host
+	header_up -X-forwarded-For
+	header_up -X-forwarded-Proto
+	header_down -Access-Control-Allow-Origin
 }
 
-
-
 :{$PORT:4040} {
-  handle_path /api/* {
-    respond @options 204
+	handle_path /api/* {
+		respond @options 204
 
-    handle @not-options {
-      @free-key expression `{header.authorization}.endsWith(":fx")`
-      @not-free-key expression `!{header.authorization}.endsWith(":fx")`
+		handle @not-options {
+			@free-key expression `{header.authorization}.endsWith(":fx")`
+			@not-free-key expression `!{header.authorization}.endsWith(":fx")`
 
-      reverse_proxy @free-key https://api-free.deepl.com {
-        import reverse-proxy
-      }
-      reverse_proxy @not-free-key https://api.deepl.com {
-        import reverse-proxy
-      }
+			reverse_proxy @free-key https://api-free.deepl.com {
+				import reverse-proxy
+			}
+			reverse_proxy @not-free-key https://api.deepl.com {
+				import reverse-proxy
+			}
+		}
+		import cors
+	}
 
-    }
-    import cors
-  }
-
-  root * /srv/site
-  file_server
+	handle {
+		root * /srv/site
+		try_files {path} /index.html
+		file_server
+	}
 }
