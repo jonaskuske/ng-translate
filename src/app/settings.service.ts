@@ -1,15 +1,16 @@
 import { Injectable, signal, effect } from '@angular/core'
 
 const STORAGE_API_KEY = 'api_key'
-const STORAGE_DARK_MODE = 'dark_mode'
+const STORAGE_DARK_MODE = 'color_scheme'
 
 export type ColorScheme = 'light dark' | 'light' | 'dark'
 
 @Injectable({ providedIn: 'root' })
 export class SettingsService {
 	readonly apiKey = signal(localStorage.getItem(STORAGE_API_KEY) ?? '')
-	readonly colorScheme = signal(
-		(localStorage.getItem(STORAGE_DARK_MODE) ?? 'auto') as ColorScheme,
+	readonly colorScheme = signal<ColorScheme>(
+		(localStorage.getItem(STORAGE_DARK_MODE) as ColorScheme | null) ??
+			'light dark',
 	)
 
 	constructor() {
