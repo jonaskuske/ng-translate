@@ -93,6 +93,7 @@ const SOURCE_LANG_AUTO = '_auto_'
 						>
 							<span>Förmlichkeit:</span>
 							<db-radio
+								name="formality"
 								[checked]="formality() === 'default'"
 								(change)="formality.set('default')"
 								value="default"
@@ -100,6 +101,7 @@ const SOURCE_LANG_AUTO = '_auto_'
 								Standard
 							</db-radio>
 							<db-radio
+								name="formality"
 								[checked]="formality() === 'prefer_more'"
 								(change)="formality.set('prefer_more')"
 								value="prefer_more"
@@ -107,6 +109,7 @@ const SOURCE_LANG_AUTO = '_auto_'
 								Förmlicher
 							</db-radio>
 							<db-radio
+								name="formality"
 								[checked]="formality() === 'prefer_less'"
 								(change)="formality.set('prefer_less')"
 								value="prefer_less"
