@@ -10,8 +10,6 @@ import {
 	withHashLocation,
 	withViewTransitions,
 } from '@angular/router'
-
-import { routes } from './app.routes'
 import {
 	HttpHandlerFn,
 	HttpRequest,
@@ -19,7 +17,8 @@ import {
 	withFetch,
 	withInterceptors,
 } from '@angular/common/http'
-import { TranslationService } from './translation.service'
+
+import { routes } from './app.routes'
 import { SettingsService } from './settings.service'
 
 export function authInterceptor(
@@ -36,7 +35,6 @@ export function authInterceptor(
 
 export const appConfig: ApplicationConfig = {
 	providers: [
-		provideExperimentalZonelessChangeDetection(),
 		provideRouter(
 			routes,
 			withHashLocation(),
@@ -44,7 +42,7 @@ export const appConfig: ApplicationConfig = {
 			withComponentInputBinding(),
 		),
 		provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
-		TranslationService,
+		provideExperimentalZonelessChangeDetection(),
 		{ provide: LOCALE_ID, useValue: 'de-DE' },
 	],
 }

@@ -4,7 +4,12 @@ import {
 	inject,
 	signal,
 } from '@angular/core'
-import { FormsModule, NgForm } from '@angular/forms'
+import {
+	FormBuilder,
+	FormsModule,
+	ReactiveFormsModule,
+	Validators,
+} from '@angular/forms'
 import { RouterOutlet, RouterModule } from '@angular/router'
 import { TranslationService } from '../translation.service'
 import {
@@ -19,6 +24,9 @@ import {
 	DBTextarea,
 } from '@db-ui/ngx-components'
 import { CommonModule } from '@angular/common'
+import { Formality, TranslationData } from '../types'
+
+const SOURCE_LANG_AUTO = '_auto_'
 
 @Component({
 	selector: 'app-translate',
@@ -28,6 +36,7 @@ import { CommonModule } from '@angular/common'
 		RouterOutlet,
 		RouterModule,
 		FormsModule,
+		ReactiveFormsModule,
 		DBSection,
 		DBSelect,
 		DBRadio,
@@ -42,15 +51,14 @@ import { CommonModule } from '@angular/common'
 	template: `
 		<db-section width="large">
 			<form
-				#form="ngForm"
-				(ngSubmit)="onSubmit(form)"
+				[formGroup]="form"
+				(ngSubmit)="onSubmit()"
 				class="grid"
 				[class.show-result]="showResult()"
-				style="grid-template-columns: 1fr 1fr; gap: var(--db-spacing-fixed-lg) var(--db-spacing-fixed-xs);"
+				style="grid-template-columns: 1fr 1fr; gap: var(--db-spacing-responsive-xs) var(--db-spacing-responsive-2xs);"
 			>
 				<db-select
-					[ngModel]="'_auto_'"
-					name="source_lang"
+					formControlName="source_lang"
 					label="Ausgangssprache"
 					style="grid-column: 1"
 				>
@@ -60,10 +68,9 @@ import { CommonModule } from '@angular/common'
 					}
 				</db-select>
 				<db-select
-					[required]="true"
-					ngModel
-					name="target_lang"
+					formControlName="target_lang"
 					label="Zielsprache"
+					[required]="true"
 					style="grid-column: 2"
 					customValidity="no-validation"
 					invalidMessage=" "
@@ -106,23 +113,21 @@ import { CommonModule } from '@angular/common'
 							></db-radio>
 
 							<db-checkbox
-								[ngModel]="true"
-								name="adjust_formatting"
+								formControlName="adjust_formatting"
 								label="Format/Zeichensetzung anpassen"
 							/>
 						</div>
 
-						<div style="margin-bottom: var(--db-spacing-fixed-md);">
-							<db-switch ngModel name="use_glossary" [disabled]="true">
+						<div style="margin-bottom: var(--db-spacing-responsive-xs);">
+							<db-switch formControlName="use_glossary">
 								Glossar verwenden
 							</db-switch>
 						</div>
 
 						<db-textarea
-							ngModel
-							name="context"
-							[rows]="3"
+							formControlName="context"
 							label="Kontext für die Übersetzung"
+							[rows]="3"
 						/>
 					</db-accordion-item>
 				</db-accordion>
@@ -138,8 +143,7 @@ import { CommonModule } from '@angular/common'
 						<h3 class="mr-auto">Ausgangstext</h3>
 					</div>
 					<db-textarea
-						ngModel
-						name="text"
+						formControlName="text"
 						[required]="true"
 						(input)="form.controls['text'].setValue($event.target.value)"
 						label="Zu übersetzender Text"
@@ -274,26 +278,34 @@ export default class TranslateComponent {
 	readonly translationResult = signal('')
 	readonly copySuccess = signal(false)
 
-	readonly formality = signal('default')
+	readonly formality = signal<Formality>('default')
+	readonly form = inject(FormBuilder).nonNullable.group({
+		text: ['', Validators.required],
+		source_lang: [SOURCE_LANG_AUTO],
+		target_lang: ['', Validators.required],
+		context: [''],
+		adjust_formatting: [true],
+		use_glossary: [{ value: undefined, disabled: true }],
+	})
 
 	copyResult() {
-		navigator.clipboard.writeText(this.translationResult()).then(() => {
+		void navigator.clipboard.writeText(this.translationResult()).then(() => {
 			this.copySuccess.set(true)
 			setTimeout(() => this.copySuccess.set(false), 1500)
 		})
 	}
 
-	onSubmit(form: NgForm) {
-		const formality = this.formality()
-		const { source_lang, text, adjust_formatting, ...rest } = form.value
+	onSubmit() {
+		const { text, source_lang, adjust_formatting, ...formValue } =
+			this.form.getRawValue()
 
 		const data = {
-			...rest,
-			formality,
-			source_lang: source_lang === '_auto_' ? undefined : source_lang,
-			preserve_formatting: adjust_formatting === false,
 			text: [text],
-		}
+			source_lang: source_lang === SOURCE_LANG_AUTO ? undefined : source_lang,
+			preserve_formatting: adjust_formatting === false,
+			formality: this.formality(),
+			...formValue,
+		} satisfies TranslationData
 
 		this.translation.translate(data).subscribe(({ translations }) => {
 			this.translationResult.set(translations[0].text)

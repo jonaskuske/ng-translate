@@ -13,6 +13,11 @@ export class SettingsService {
 			'light dark',
 	)
 
+	reset() {
+		this.apiKey.set('')
+		this.colorScheme.set('light dark')
+	}
+
 	constructor() {
 		effect(() => {
 			localStorage.setItem(STORAGE_API_KEY, this.apiKey())

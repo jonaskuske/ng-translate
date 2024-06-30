@@ -14,6 +14,7 @@ import {
 } from '@db-ui/ngx-components'
 import { SettingsService } from '../settings.service'
 import { TranslationService } from '../translation.service'
+import { HttpErrorResponse } from '@angular/common/http'
 
 @Component({
 	selector: 'app-auth',
@@ -30,6 +31,8 @@ import { TranslationService } from '../translation.service'
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<db-section width="medium">
+			<h1>Willkommen</h1>
+
 			@if (errorMessage(); as message) {
 				<db-notification
 					data-density="functional"
@@ -44,9 +47,7 @@ import { TranslationService } from '../translation.service'
 				</db-notification>
 			}
 
-			<h1>Willkommen</h1>
-
-			<p>Speichere deinen API Key, um zu beginnen.</p>
+			<p>Speichere deinen API-Key, um zu beginnen.</p>
 
 			<form
 				#form="ngForm"
@@ -58,7 +59,8 @@ import { TranslationService } from '../translation.service'
 					type="password"
 					ngModel
 					name="api_key"
-					label="API Key"
+					variant="floating"
+					label="API-Key"
 					[required]="true"
 					icon="key"
 					message="Kostenlos erhältlich unter deepl.com/your-account/keys"
@@ -82,18 +84,21 @@ export default class AuthComponent {
 
 	onSubmit(form: NgForm) {
 		this.errorMessage.set('')
-		this.settings.apiKey.set(form.value.api_key)
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+		this.settings.apiKey.set(form.value?.api_key as string)
 
 		const from = this.router.routerState.snapshot.root.queryParamMap.get('from')
 
 		this.translations.getUsage().subscribe({
-			next: () => this.router.navigateByUrl(from || '/', { replaceUrl: true }),
-			error: (err) => {
+			next: () => {
+				void this.router.navigateByUrl(from || '/', { replaceUrl: true })
+			},
+			error: (err: HttpErrorResponse) => {
 				form.resetForm()
 
 				if (err?.status === 401 || err?.status === 403) {
 					this.errorMessage.set(
-						`Bitte überprüfe deinen API Key. (${err.status})`,
+						`Bitte überprüfe deinen API-Key. (${err.status})`,
 					)
 				} else this.errorMessage.set('Bitte probiere es später erneut.')
 			},

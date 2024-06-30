@@ -8,7 +8,7 @@ export default tseslint.config(
 		files: ['**/*.{js,cjs,mjs,ts,cts,mts}'],
 		extends: [
 			eslint.configs.recommended,
-			...tseslint.configs.recommended,
+			...tseslint.configs.recommendedTypeChecked,
 			...tseslint.configs.stylistic,
 			...angular.configs.tsRecommended,
 		],
@@ -39,6 +39,7 @@ export default tseslint.config(
 						'^_|ctx|err|res|rej|resolve|reject|resp|req|response|reply|request|evt|event|cb|callback',
 				},
 			],
+			'@typescript-eslint/unbound-method': ['error', { ignoreStatic: true }],
 		},
 	},
 	{
@@ -49,5 +50,5 @@ export default tseslint.config(
 		],
 		rules: {},
 	},
-	{ ignores: ['.yarn/**/*', '.pnp.*'] },
+	{ ignores: ['.yarn/**/*', '.pnp.*', 'eslint.config.js'] },
 )

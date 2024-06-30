@@ -12,7 +12,7 @@ export interface TranslateDB extends DBSchema {
 @Injectable({ providedIn: 'root' })
 export class HistoryService {
 	db = openDB<TranslateDB>('translate', 5, {
-		async upgrade(database) {
+		upgrade(database) {
 			if (!database.objectStoreNames.contains('history')) {
 				database.createObjectStore('history', {
 					autoIncrement: false,
@@ -23,17 +23,19 @@ export class HistoryService {
 	})
 
 	async addEntry(result: TranslationResult, data: TranslationData) {
-		const db = await this.db
-		return db.put('history', { result, data, date: new Date() })
+		const entry: HistoryEntry = { result, data, date: new Date() }
+		return (await this.db).put('history', entry)
 	}
 
 	async getEntries() {
-		const db = await this.db
-		return db.getAll('history')
+		return (await this.db).getAll('history')
 	}
 
 	async getCount() {
-		const db = await this.db
-		return db.count('history')
+		return (await this.db).count('history')
+	}
+
+	async reset() {
+		return (await this.db).clear('history')
 	}
 }

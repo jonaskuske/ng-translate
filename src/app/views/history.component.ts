@@ -10,12 +10,13 @@ import { DBCard, DBSection } from '@db-ui/ngx-components'
 	imports: [RouterOutlet, RouterModule, CommonModule, DBSection, DBCard],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
-		<db-section width="large" data-density="functional">
+		<db-section width="large" spacing="small">
 			<h2>Letzte Übersetzungen</h2>
 
 			<div
 				class="grid"
-				style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--db-spacing-fixed-md)"
+				style="grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--db-spacing-fixed-md)"
+				data-density="functional"
 			>
 				@for (item of entries | async; track item.date) {
 					<article>
