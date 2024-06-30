@@ -52,7 +52,7 @@
 						"tsConfig": "tsconfig.app.json",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": [
-							"@db-ui/core/dist/css/enterprise/db-ui-core.vars.css",
+							"@db-ui/components/build/styles/db-ui-42.css",
 							"src/styles.css"
 						],
 						"scripts": []
@@ -77,6 +77,7 @@
 							"optimization": false,
 							"extractLicenses": false,
 							"sourceMap": true,
+							"outputHashing": "media",
 							"fileReplacements": [
 								{
 									"replace": "src/environments/environment.ts",

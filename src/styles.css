@@ -9,11 +9,17 @@
 .flex {
 	display: flex;
 }
+.flex-wrap {
+	flex-wrap: wrap;
+}
 .items-center {
 	align-items: center;
 }
 .justify-center {
 	justify-content: center;
+}
+.justify-end {
+	justify-content: flex-end;
 }
 .flex-column {
 	flex-direction: column;

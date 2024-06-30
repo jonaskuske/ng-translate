@@ -1,95 +1,128 @@
-import { Component } from '@angular/core'
+import { Component, effect, inject, signal } from '@angular/core'
 import { RouterOutlet, RouterModule } from '@angular/router'
-import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
+import {
+	DBBrand,
+	DBHeader,
+	DBNavigation,
+	DBNavigationItem,
+	NavigationContentDirective,
+	NavigationDirective,
+	MetaNavigationDirective,
+} from '@db-ui/ngx-components'
+import { SettingsService } from './settings.service'
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, RouterModule, DBUIElementsModule],
+	imports: [
+		RouterOutlet,
+		RouterModule,
+		DBHeader,
+		DBBrand,
+		DBNavigation,
+		DBNavigationItem,
+		NavigationDirective,
+		NavigationContentDirective,
+		MetaNavigationDirective,
+	],
 	template: `
-		<db-page>
-			<db-header slot="header">
-				<db-brand src="/assets/images/logo.svg">Translate</db-brand>
-				<db-mainnavigation>
-					<li>
-						<db-link
-							routerLinkActive
-							#home="routerLinkActive"
-							[routerLinkActiveOptions]="{ exact: true }"
-							[attr.current]="home.isActive ? 'page' : 'false'"
-						>
-							<a routerLink="/">Übersetzer</a>
-						</db-link>
-					</li>
-					<li>
-						<db-link
-							routerLinkActive
-							#history="routerLinkActive"
-							[attr.current]="history.isActive ? 'page' : 'false'"
-						>
-							<a routerLink="/history">Verlauf</a>
-						</db-link>
-					</li>
-					<li>
-						<db-link
-							routerLinkActive
-							#glossary="routerLinkActive"
-							[attr.current]="glossary.isActive ? 'page' : 'false'"
-						>
-							<a routerLink="/glossary">Glossar</a>
-						</db-link>
-					</li>
-					<li>
-						<db-link
-							routerLinkActive
-							#settings="routerLinkActive"
-							[attr.current]="settings.isActive ? 'page' : 'false'"
-						>
-							<a [routerLink]="'/settings'">Einstellungen</a>
-						</db-link>
-					</li>
-				</db-mainnavigation>
+		<div class="db-page" data-variant="fixed" data-fade-in="true">
+			<db-header [drawerOpen]="drawerOpen()" (onToggle)="toggle($event)">
+				<db-brand brand [hideLogo]="true">Translate</db-brand>
+				<ng-container *dbMetaNavigation>
+					<a
+						routerLink="/imprint"
+						routerLinkActive
+						ariaCurrentWhenActive="page"
+						(click)="drawerOpen.set(false)"
+					>
+						Impressum
+					</a>
+					<a
+						routerLink="/privacy"
+						routerLinkActive
+						ariaCurrentWhenActive="page"
+						(click)="drawerOpen.set(false)"
+					>
+						Datenschutz
+					</a>
+				</ng-container>
+				<db-navigation *dbNavigation>
+					<db-navigation-item>
+						<ng-container *dbNavigationContent>
+							<a
+								routerLink="/"
+								routerLinkActive
+								ariaCurrentWhenActive="page"
+								[routerLinkActiveOptions]="{ exact: true }"
+							>
+								Übersetzer
+							</a>
+						</ng-container>
+					</db-navigation-item>
+					<db-navigation-item>
+						<ng-container *dbNavigationContent>
+							<a
+								routerLink="/history"
+								routerLinkActive
+								ariaCurrentWhenActive="page"
+							>
+								Verlauf
+							</a>
+						</ng-container>
+					</db-navigation-item>
+					<db-navigation-item>
+						<ng-container *dbNavigationContent>
+							<a
+								routerLink="/glossary"
+								routerLinkActive
+								ariaCurrentWhenActive="page"
+							>
+								Glossar
+							</a>
+						</ng-container>
+					</db-navigation-item>
+					<db-navigation-item>
+						<ng-container *dbNavigationContent>
+							<a
+								routerLink="/settings"
+								routerLinkActive
+								ariaCurrentWhenActive="page"
+							>
+								Einstellungen
+							</a>
+						</ng-container>
+					</db-navigation-item>
+				</db-navigation>
 			</db-header>
 
-			<div class="flex flex-column outlet-container">
+			<main class="db-main" style="scrollbar-gutter: stable both-edges;">
 				<router-outlet />
-			</div>
-
-			<db-footer slot="footer" border>
-				<db-metanavigation style="margin-left: auto;">
-					<db-link
-						routerLinkActive
-						#imprint="routerLinkActive"
-						[attr.current]="imprint.isActive ? 'page' : 'false'"
-					>
-						<a [routerLink]="'/imprint'">Impressum</a>
-					</db-link>
-					<db-link
-						routerLinkActive
-						#privacy="routerLinkActive"
-						[attr.current]="privacy.isActive ? 'page' : 'false'"
-					>
-						<a [routerLink]="'/privacy'">Datenschutz</a>
-					</db-link>
-				</db-metanavigation>
-			</db-footer>
-		</db-page>
+			</main>
+		</div>
 	`,
 	styles: [
 		`
-			:host ::ng-deep .cmp-accordion {
-				padding-right: 0;
-			}
-
-			.outlet-container {
-				padding: 2.5rem 1rem 0;
-			}
-			@media (min-width: 1090px) {
-				.outlet-container {
-					padding: 0;
-				}
+			.db-page {
+				--db-drawer-max-width: 325px;
 			}
 		`,
 	],
 })
-export class AppComponent {}
+export class AppComponent {
+	readonly drawerOpen = signal(false)
+	readonly colorScheme = inject(SettingsService).colorScheme.asReadonly()
+
+	toggle(open: boolean) {
+		this.drawerOpen.set(open)
+	}
+
+	constructor() {
+		effect(() => {
+			const meta = document.head.querySelector<HTMLMetaElement>(
+				'meta[name="color-scheme"]',
+			)
+			if (meta) meta.content = this.colorScheme()
+		})
+	}
+}

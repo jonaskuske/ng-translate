@@ -1,29 +1,31 @@
 import { Component } from '@angular/core'
 import { RouterOutlet, RouterModule } from '@angular/router'
-import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
+import { DBSection } from '@db-ui/ngx-components'
 
 @Component({
 	selector: 'app-privacy',
 	standalone: true,
-	imports: [RouterOutlet, RouterModule, DBUIElementsModule],
+	imports: [RouterOutlet, RouterModule, DBSection],
 	template: `
-		<db-headline pulse variant="1">Datenschutz</db-headline>
-		<p>
-			Dieses Angebot nutzt für Übersetzungen die Dienste von DeepL SE, Maarweg
-			165, 50825 Köln:
-			<a href="https://www.deepl.com/de/publisher">www.deepl.com/de/publisher</a
-			>. Für die Übersetzung werden der zu übersetzende Text sowie die
-			Übersetzungs-Einstellungen an DeepL SE übertragen. DeepL SE erhält dabei
-			auch Zugriff auf Ihre IP-Adresse. Mit der Nutzung erklären Sie sich mit
-			diesem Vorgehen einverstanden.
-		</p>
-		<p>
-			Falls Sie die auf der Seite und im Impressum genannten Daten zur
-			Kontaktaufnahme nutzen, so verwenden wir Ihre Kontaktdaten, die wir der
-			Absenderadresse entnehmen können, ausschließlich zur Beantwortung Ihrer
-			Anfrage; auf Wunsch löschen wir diese selbstverständlich wieder.
-		</p>
+		<db-section width="medium" spacing="small" data-density="functional">
+			<h1>Datenschutz</h1>
+			<p>
+				Dieses Angebot nutzt für Übersetzungen die Dienste von DeepL SE, Maarweg
+				165, 50825 Köln:
+				<a href="https://www.deepl.com/de/publisher">
+					www.deepl.com/de/publisher </a
+				>. Für die Übersetzung werden der zu übersetzende Text sowie die
+				Übersetzungs-Einstellungen an DeepL SE übertragen. DeepL SE erhält dabei
+				auch Zugriff auf Ihre IP-Adresse. Mit der Nutzung erklären Sie sich mit
+				diesem Vorgehen einverstanden.
+			</p>
+			<p>
+				Falls Sie die auf der Seite und im Impressum genannten Daten zur
+				Kontaktaufnahme nutzen, so verwenden wir Ihre Kontaktdaten, die wir der
+				Absenderadresse entnehmen können, ausschließlich zur Beantwortung Ihrer
+				Anfrage; auf Wunsch löschen wir diese selbstverständlich wieder.
+			</p>
+		</db-section>
 	`,
-	styles: [],
 })
 export default class PrivacyComponent {}

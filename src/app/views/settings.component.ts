@@ -1,12 +1,17 @@
-import { Component } from '@angular/core'
+import { Component, inject, signal } from '@angular/core'
 import { FormsModule, NgForm } from '@angular/forms'
 import { RouterOutlet, RouterModule, Router } from '@angular/router'
-import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
 import { SettingsService } from '../settings.service'
 import { TranslationService } from '../translation.service'
-import { tap } from 'rxjs'
-import { UsageData } from '../types'
 import { CommonModule } from '@angular/common'
+import {
+	DBButton,
+	DBInput,
+	DBNotification,
+	DBRadio,
+	DBSection,
+	DBSwitch,
+} from '@db-ui/ngx-components'
 
 @Component({
 	selector: 'app-settings',
@@ -14,100 +19,148 @@ import { CommonModule } from '@angular/common'
 	imports: [
 		RouterOutlet,
 		RouterModule,
-		DBUIElementsModule,
 		FormsModule,
 		CommonModule,
+		DBButton,
+		DBInput,
+		DBSwitch,
+		DBSection,
+		DBRadio,
+		DBNotification,
 	],
 	template: `
-		<db-headline variant="2">API Key</db-headline>
-
-		<p>
-			Verwendung: {{ usageData.character_count | number }} /
-			{{ usageData.character_limit | number }} Zeichen ({{
-				usageData.character_count / usageData.character_limit
-					| percent: '1.0-1'
-			}})
-		</p>
-
-		<form (ngSubmit)="onSubmit(f)" #f="ngForm">
-			<div style="margin-bottom: 1rem;">
-				<db-input
-					(input)="f.controls['api_key'].setValue(getValue($event))"
-					required
-					[ngModel]="storedKey"
-					name="api_key"
-					type="password"
-					label="API Key"
-				/>
-			</div>
-
-			<div class="flex" style="gap: 1rem">
-				<db-button
-					[attr.disabled]="f.form.invalid || f.value.api_key === storedKey"
-					size="small"
-					variant="primary"
-					type="submit"
+		<db-section width="medium">
+			@if (errorMessage(); as message) {
+				<db-notification
+					data-density="functional"
+					headline="Authentifizierung fehlgeschlagen"
+					semantic="critical"
+					variant="standalone"
+					ariaLive="assertive"
+					behaviour="closable"
+					(onClose)="errorMessage.set('')"
 				>
-					API Key speichern
-				</db-button>
-				<db-button
-					size="small"
-					variant="secondary-outline"
-					type="button"
-					(click)="onReset(f)"
-				>
-					API Key zurücksetzen
-				</db-button>
-			</div>
-		</form>
-
-		<db-headline variant="2">Aussehen</db-headline>
-		<db-toggle disabled>
-			Dunkler Modus <span style="font-size:10px">(bald verfügbar)</span>
-		</db-toggle>
-	`,
-	styles: [
-		`
-			:host ::ng-deep .elm-label.sc-db-input {
-				max-width: calc(100% - 1rem);
+					{{ message }}
+				</db-notification>
 			}
-		`,
-	],
+
+			<h2>API Key</h2>
+
+			<p>
+				Verwendung:
+				@if (getUsage$ | async; as usage) {
+					{{ usage.character_count | number }} /
+					{{ usage.character_limit | number }} Zeichen ({{
+						usage.character_count / usage.character_limit | percent: '1.0-1'
+					}})
+				}
+			</p>
+
+			<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+				<div style="margin-bottom: var(--db-spacing-fixed-md);">
+					<db-input
+						[required]="true"
+						name="api_key"
+						[ngModel]="apiKey()"
+						type="password"
+						label="API Key"
+						invalidMessage=" "
+						customValidity="no-validation"
+					/>
+				</div>
+
+				<div class="flex flex-wrap" style="gap: var(--db-spacing-fixed-md)">
+					<db-button
+						[disabled]="!!form.invalid || form.value.api_key === apiKey()"
+						size="medium"
+						variant="filled"
+						type="submit"
+					>
+						API Key speichern
+					</db-button>
+					<db-button
+						size="medium"
+						variant="ghost"
+						type="button"
+						(click)="onReset(form)"
+					>
+						API Key zurücksetzen
+					</db-button>
+				</div>
+			</form>
+		</db-section>
+
+		<db-section width="medium" spacing="none">
+			<h2>Aussehen</h2>
+
+			<p>Farbschema wählen:</p>
+
+			<div class="flex" style="gap: var(--db-spacing-fixed-md)">
+				<db-radio
+					[checked]="colorScheme() === 'light dark'"
+					(change)="colorScheme.set('light dark')"
+					name="color_scheme"
+					value="auto"
+				>
+					Auto
+				</db-radio>
+				<db-radio
+					[checked]="colorScheme() === 'light'"
+					(change)="colorScheme.set('light')"
+					name="color_scheme"
+					value="light"
+				>
+					Hell
+				</db-radio>
+				<db-radio
+					[checked]="colorScheme() === 'dark'"
+					(change)="colorScheme.set('dark')"
+					name="color_scheme"
+					value="dark"
+				>
+					Dunkel
+				</db-radio>
+			</div>
+		</db-section>
+	`,
 })
 export default class SettingsComponent {
-	usageData: UsageData = { character_count: 0, character_limit: 0 }
+	private readonly settings = inject(SettingsService)
+	private readonly translations = inject(TranslationService)
+	private readonly router = inject(Router)
 
-	constructor(
-		private settings: SettingsService,
-		private translations: TranslationService,
-		private router: Router,
-	) {
-		this.translations.getUsage().subscribe((result) => {
-			this.usageData = result
+	readonly getUsage$ = this.translations.getUsage()
+
+	readonly errorMessage = signal('')
+
+	readonly apiKey = this.settings.apiKey.asReadonly()
+	readonly colorScheme = this.settings.colorScheme
+
+	onSubmit(form: NgForm) {
+		const prevKey = this.apiKey()
+
+		this.errorMessage.set('')
+		this.settings.apiKey.set(form.value.api_key)
+
+		this.translations.getUsage().subscribe({
+			error: (err) => {
+				this.settings.apiKey.set(prevKey)
+
+				if (err?.status === 401 || err?.status === 403) {
+					this.errorMessage.set(
+						`Der eingegebene API Key ist ungültig und wurde nicht gespeichert. (${err.status})`,
+					)
+				} else this.errorMessage.set('Bitte probiere es später erneut.')
+			},
 		})
-	}
-
-	getValue = (evt: Event) => (evt.target as HTMLInputElement).value
-
-	get storedKey() {
-		return this.settings.apiKey
 	}
 
 	onReset(form: NgForm) {
 		form.resetForm()
-		this.settings.apiKey = ''
+		this.settings.apiKey.set('')
 		this.router.navigateByUrl(this.router.routerState.snapshot.url, {
 			onSameUrlNavigation: 'reload',
 			replaceUrl: true,
 		})
-	}
-
-	onSubmit(form: NgForm) {
-		const prevKey = this.storedKey
-		this.settings.apiKey = form.value.api_key
-		this.translations
-			.getUsage()
-			.pipe(tap({ error: (err) => (this.settings.apiKey = prevKey) }))
-			.subscribe()
 	}
 }

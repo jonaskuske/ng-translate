@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http'
-import { Injectable } from '@angular/core'
+import { inject, Injectable } from '@angular/core'
 import { Observable, delayWhen, map, of, tap } from 'rxjs'
 import { HistoryService } from './history.service'
-import { SettingsService } from './settings.service'
 import { environment } from '../environments/environment'
 import {
 	TranslationData,
@@ -11,23 +10,39 @@ import {
 	UsageData,
 } from './types'
 
+const API_URL = `${environment.API_HOST}/api`
+
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
-	constructor(
-		private http: HttpClient,
-		private history: HistoryService,
-		private settings: SettingsService,
-	) {}
-
-	API_URL = `${environment.API_HOST}/api`
+	private readonly http = inject(HttpClient)
+	private readonly history = inject(HistoryService)
 
 	translate(data: TranslationData, addToHistory = true) {
 		return this.http
-			.post<TranslationResult>(`${this.API_URL}/v2/translate`, data, {
-				headers: { authorization: this.settings.apiKey },
-			})
+			.post<TranslationResult>(`${API_URL}/v2/translate`, data)
 			.pipe(
 				tap((result) => addToHistory && this.history.addEntry(result, data)),
+			)
+	}
+
+	getUsage() {
+		return this.http.get<UsageData>(`${API_URL}/v2/usage`)
+	}
+
+	getSourceLanguages() {
+		return this.http
+			.get<Language[]>(`${API_URL}/v2/languages?type=source`)
+			.pipe(
+				delayWhen((result) => this.translateLangNames(result)),
+				map((result) => this.mapLangNames(result)),
+			)
+	}
+	getTargetLanguages() {
+		return this.http
+			.get<Language[]>(`${API_URL}/v2/languages?type=target`)
+			.pipe(
+				delayWhen((result) => this.translateLangNames(result)),
+				map((result) => this.mapLangNames(result)),
 			)
 	}
 
@@ -44,33 +59,6 @@ export class TranslationService {
 			'lang_names',
 			JSON.stringify([...this.#langNameMap.entries()]),
 		)
-	}
-
-	getUsage() {
-		return this.http.get<UsageData>(`${this.API_URL}/v2/usage`, {
-			headers: { authorization: this.settings.apiKey },
-		})
-	}
-
-	getSourceLanguages() {
-		return this.http
-			.get<Language[]>(`${this.API_URL}/v2/languages?type=source`, {
-				headers: { authorization: this.settings.apiKey },
-			})
-			.pipe(
-				delayWhen((result) => this.translateLangNames(result)),
-				map((result) => this.mapLangNames(result)),
-			)
-	}
-	getTargetLanguages() {
-		return this.http
-			.get<Language[]>(`${this.API_URL}/v2/languages?type=target`, {
-				headers: { authorization: this.settings.apiKey },
-			})
-			.pipe(
-				delayWhen((result) => this.translateLangNames(result)),
-				map((result) => this.mapLangNames(result)),
-			)
 	}
 
 	private translateLangNames(languages: Language[]): Observable<unknown> {

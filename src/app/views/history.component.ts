@@ -1,87 +1,58 @@
 import { CommonModule } from '@angular/common'
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { RouterOutlet, RouterModule, Router } from '@angular/router'
-import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
 import { HistoryService } from '../history.service'
-import { HistoryEntry } from '../types'
-import { map } from 'rxjs'
+import { DBCard, DBSection } from '@db-ui/ngx-components'
 
 @Component({
 	selector: 'app-history',
 	standalone: true,
-	imports: [RouterOutlet, RouterModule, DBUIElementsModule, CommonModule],
+	imports: [RouterOutlet, RouterModule, CommonModule, DBSection, DBCard],
 	template: `
-		<db-headline variant="2">Letzte Übersetzungen</db-headline>
-		<db-cards>
-			@for (item of entries | async; track item.date) {
-				<db-card>
-					<db-headline>
-						{{ item.result.translations[0].detected_source_language }}
-						→
-						{{ item.data.target_lang }}
-						<span class="date">{{ item.date | date: 'short' }}</span>
-					</db-headline>
-					<p style="white-space: pre-line;">
-						{{ item.result.translations[0].text | slice: 0 : 250 }}
-					</p>
-				</db-card>
-			}
-		</db-cards>
-		<div
-			class="flex justify-center"
-			style="margin-top: auto; padding-top: 1rem;"
-		>
-			<db-pagination
-				[attr.currentpage]="currentPage | async"
-				[attr.pages]="pages | async"
-				count="3"
-				(dbChange)="log($event)"
-			/>
-		</div>
+		<db-section width="large" data-density="functional">
+			<h2>Letzte Übersetzungen</h2>
+
+			<div
+				class="grid"
+				style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--db-spacing-fixed-md)"
+			>
+				@for (item of entries | async; track item.date) {
+					<article>
+						<db-card spacing="medium">
+							<h3 class="flex">
+								{{ item.result.translations[0].detected_source_language }}
+								→
+								{{ item.data.target_lang }}
+								<span class="date">{{ item.date | date: 'short' }}</span>
+							</h3>
+							<p style="white-space: pre-line;">
+								{{ item.result.translations[0].text | slice: 0 : 250 }}
+							</p>
+						</db-card>
+					</article>
+				}
+			</div>
+		</db-section>
 	`,
 	styles: [
 		`
-			:host {
-				display: contents;
-			}
-			:host ::ng-deep db-pagination[pages='1'] ol li:nth-child(3) {
-				display: none;
-			}
-			:host ::ng-deep db-pagination[pages='1'] ol li:first-child,
-			:host ::ng-deep db-pagination[pages='1'] ol li:last-child {
-				opacity: 0.25;
-			}
-			:host ::ng-deep db-card h3 {
-				display: flex;
-			}
-			:host ::ng-deep db-card figcaption {
-				width: 100%;
-			}
 			.date {
 				margin-left: auto;
 				font-size: 12px;
 				align-self: center;
-				color: var(--db-color-cool-gray-500);
+				color: var(--db-neutral-contrast-low-enabled);
 			}
 		`,
 	],
 })
 export default class HistoryComponent {
-	title = 'History'
-	entries: Promise<HistoryEntry[]>
-	log = console.log
+	private readonly history = inject(HistoryService)
+	private readonly router = inject(Router)
+
+	entries = this.history.getEntries()
 	pages = this.history.getCount().then((count) => Math.ceil(count / 20))
 
-	currentPage = this.router.routerState.root.queryParamMap.pipe(
-		map((query) => query.get('page') || '1'),
-	)
-
-	// page = this.router.
-
-	constructor(
-		public history: HistoryService,
-		private router: Router,
-	) {
-		this.entries = history.getEntries()
-	}
+	// currentPage = this.router.routerState.root.queryParamMap.pipe(
+	// 	map((query) => query.get('page') || '1'),
+	// )
 }

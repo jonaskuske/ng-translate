@@ -1,13 +1,15 @@
 import { Component } from '@angular/core'
 import { RouterOutlet, RouterModule } from '@angular/router'
-import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
+import { DBSection } from '@db-ui/ngx-components'
 
 @Component({
 	selector: 'app-glossary',
 	standalone: true,
-	imports: [RouterOutlet, RouterModule, DBUIElementsModule],
+	imports: [RouterOutlet, RouterModule, DBSection],
 	template: `
-		<!--
+		<db-section width="large">
+			<p>Diese Funktion ist noch nicht verfügbar.</p>
+			<!--
 		<db-headline variant="2">Neuer Eintrag</db-headline>
 
 		<div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
@@ -34,18 +36,11 @@ import { DBUIElementsModule } from '@db-ui/ngx-elements-enterprise/dist/lib'
 
 		<db-table density="large" border="horizontal" [attr.tabledata]="data" />
 -->
-		<p>Diese Funktion ist noch nicht verfügbar.</p>
+		</db-section>
 	`,
-	styles: [
-		`
-			:host ::ng-deep table {
-				width: 100%;
-			}
-		`,
-	],
+	styles: [],
 })
 export default class GlossaryComponent {
-	title = 'Glossary'
 	data = JSON.stringify({
 		caption: 'Einträge für Deutsch → Englisch',
 		headers: ['Ausgangstext', 'Übersetzung'],
