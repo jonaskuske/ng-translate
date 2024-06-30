@@ -655,36 +655,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/normalize.css@npm:^12.1.1":
-  version: 12.1.1
-  resolution: "@csstools/normalize.css@npm:12.1.1"
-  checksum: 10c0/28fbba6cfd9aa71252001800decfd0f2dc4116fe57b52a2adcbe40733ada36fffc676a768a67fd9865d7b5b17d3e8456de1e642c3c5c9e06526fa3fe8ab5fec4
-  languageName: node
-  linkType: hard
-
-"@db-ui/base@npm:^0.28.1":
-  version: 0.28.1
-  resolution: "@db-ui/base@npm:0.28.1"
-  checksum: 10c0/dcbc6b000566f868499f7ddf4c20d0e8a7ae9f55e76a1e6bbe3ac230d35258bc02c7d2b056bffa4938078aed463ee191de59d592ac4ce9b0d9fdb6041e4f22ad
-  languageName: node
-  linkType: hard
-
 "@db-ui/components@npm:0.2.2, @db-ui/components@npm:^0.2.2":
   version: 0.2.2
   resolution: "@db-ui/components@npm:0.2.2"
   dependencies:
     "@db-ui/foundations": "npm:0.2.2"
   checksum: 10c0/08304b4db5c07638fa2d037b44a8fc90e06cb08b77932df92f82165cd835283f66e0bf3034efc7b6d02995421739687ce74cdd7f850a5c89f07e42a8795c8057
-  languageName: node
-  linkType: hard
-
-"@db-ui/core@npm:^2.21.0":
-  version: 2.21.0
-  resolution: "@db-ui/core@npm:2.21.0"
-  dependencies:
-    "@csstools/normalize.css": "npm:^12.1.1"
-    "@db-ui/base": "npm:^0.28.1"
-  checksum: 10c0/20c4188f5522987b9fc39accd47b748cf8735c0f2b2354b43e89e7ae4d826329c6e7fc9dabad3572bbc22752a45afd97c2ccc8dbfde3532813d00585cc5f6266
   languageName: node
   linkType: hard
 
@@ -4387,7 +4363,6 @@ __metadata:
     "@angular/platform-browser-dynamic": "npm:^18.1.0-next.4"
     "@angular/router": "npm:^18.1.0-next.4"
     "@db-ui/components": "npm:^0.2.2"
-    "@db-ui/core": "npm:^2.21.0"
     "@db-ui/ngx-components": "npm:^0.2.2"
     "@eslint/js": "npm:^9.6.0"
     angular-eslint: "npm:18.0.1"
@@ -4400,7 +4375,6 @@ __metadata:
     tslib: "npm:^2.6.3"
     typescript: "npm:~5.5.2"
     typescript-eslint: "npm:^8.0.0-alpha.36"
-    zone.js: "npm:~0.14.7"
   dependenciesMeta:
     "@angular/cli@18.1.0-rc.0":
       unplugged: true
@@ -6084,12 +6058,5 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 10c0/dceb44c28578b31641e13695d200d34ec4ab3966a5729814d5445b194933c096b7ced71494ce53a0e8820685d1d010df8b2422e5bf2cdea7e469d97ffbea306f
-  languageName: node
-  linkType: hard
-
-"zone.js@npm:~0.14.7":
-  version: 0.14.7
-  resolution: "zone.js@npm:0.14.7"
-  checksum: 10c0/5a5fccb78ea4653ccf3ad5c11448ffa4e005b50a0fd43da713fcc19584746000ea889ca45163d2e6e18e3a4ed7be42cdbc0dbb4dcb28449f02d23408696668cc
   languageName: node
   linkType: hard

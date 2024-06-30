@@ -36,12 +36,10 @@
 		"@angular/platform-browser-dynamic": "^18.1.0-next.4",
 		"@angular/router": "^18.1.0-next.4",
 		"@db-ui/components": "^0.2.2",
-		"@db-ui/core": "^2.21.0",
 		"@db-ui/ngx-components": "^0.2.2",
 		"idb": "^8.0.0",
 		"rxjs": "~7.8.1",
-		"tslib": "^2.6.3",
-		"zone.js": "~0.14.7"
+		"tslib": "^2.6.3"
 	},
 	"devDependencies": {
 		"@angular-eslint/builder": "^18.0.1",
