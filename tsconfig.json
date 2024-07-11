@@ -17,7 +17,7 @@
 		"importHelpers": true,
 		"target": "ESNext",
 		"module": "ESNext",
-		"useDefineForClassFields": false,
+		"isolatedModules": true,
 		"lib": ["ESNext", "dom", "DOM.Iterable"]
 	},
 	"angularCompilerOptions": {
