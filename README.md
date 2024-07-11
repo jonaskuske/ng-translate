@@ -3,7 +3,7 @@
 <p align=center>🔤 A frontend for the DeepL translation API</p>
 
 <p align=center>
-<img src="./image.png" width="600" alt="">
+<img src="./README.png" width="600" alt="">
 </p>
 
 <br>
