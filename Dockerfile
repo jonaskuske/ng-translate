@@ -1,4 +1,4 @@
-FROM node:20.11.0-alpine as builder
+FROM node:20.17.0-alpine as builder
 WORKDIR /usr/src/app
 ENV HUSKY=0
 RUN apk add bash
