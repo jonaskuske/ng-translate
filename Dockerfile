@@ -9,7 +9,7 @@ RUN corepack enable && yarn install --immutable
 COPY . .
 RUN yarn build
 
-FROM caddy:2.7.6-alpine
+FROM caddy:2.8.4-alpine
 ENV PORT 80
 COPY Caddyfile /etc/caddy/Caddyfile
 COPY --from=builder /usr/src/app/dist/browser /srv/site
