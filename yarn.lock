@@ -4328,8 +4328,6 @@ __metadata:
     typescript: "npm:~5.5.4"
     typescript-eslint: "npm:^8.2.0"
   dependenciesMeta:
-    "@angular/cli@18.1.0-rc.0":
-      unplugged: true
     "@angular/cli@18.2.1":
       unplugged: true
   languageName: unknown

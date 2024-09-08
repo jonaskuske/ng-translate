@@ -1,0 +1,16 @@
+README.*
+.angular
+.github
+.husky
+.vscode
+.yarn/*
+!.yarn/releases
+!.yarn/patches
+!.yarn/plugins
+dist
+node_modules
+.gitignore
+.gitattributes
+Dockerfile
+.dockerignore
+.pnp.*
