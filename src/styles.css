@@ -35,3 +35,8 @@
 .grid {
 	display: grid;
 }
+
+body {
+	--db-font-family-sans: Helvetica;
+    	--db-font-family-head: Helvetica;
+}
