@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { Observable, map, of, switchMap, tap } from 'rxjs'
+import { Observable, map, of, retry, switchMap, tap } from 'rxjs'
 import { HistoryService } from './history-storage'
 import { environment } from '../environments/environment'
 import {
@@ -22,6 +22,7 @@ export class TranslationService {
 		return this.http
 			.post<TranslationResult>(`${API_URL}/v2/translate`, data)
 			.pipe(
+				retry({ count: 3, delay: 1000 }),
 				tap((result) => {
 					if (addToHistory) void this.history.addEntry(result, data)
 				}),
@@ -29,19 +30,27 @@ export class TranslationService {
 	}
 
 	getUsage() {
-		return this.http.get<UsageData>(`${API_URL}/v2/usage`)
+		return this.http
+			.get<UsageData>(`${API_URL}/v2/usage`)
+			.pipe(retry({ count: 3, delay: 1000 }))
 	}
 
 	getSourceLanguages() {
 		return this.http
 			.get<Language[]>(`${API_URL}/v2/languages?type=source`)
-			.pipe(switchMap((result) => this.#translateDisplayNames(result)))
+			.pipe(
+				retry({ count: 3, delay: 1000 }),
+				switchMap((result) => this.#translateDisplayNames(result)),
+			)
 	}
 
 	getTargetLanguages() {
 		return this.http
 			.get<Language[]>(`${API_URL}/v2/languages?type=target`)
-			.pipe(switchMap((result) => this.#translateDisplayNames(result)))
+			.pipe(
+				retry({ count: 3, delay: 1000 }),
+				switchMap((result) => this.#translateDisplayNames(result)),
+			)
 	}
 
 	#translateDisplayNames(languages: Language[]): Observable<Language[]> {
