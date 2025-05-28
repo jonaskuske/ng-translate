@@ -15,7 +15,7 @@ import {
 	NavigationDirective,
 	MetaNavigationDirective,
 } from '@db-ux/ngx-core-components'
-import { SettingsService } from './settings.service'
+import { SettingsService } from './user-settings'
 
 @Component({
 	selector: 'app-root',

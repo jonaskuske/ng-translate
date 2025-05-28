@@ -1,6 +1,6 @@
 import { inject } from '@angular/core'
 import { CanMatchFn, Router, Routes } from '@angular/router'
-import { TranslationService } from './translation.service'
+import { TranslationService } from './deepl-client'
 import { catchError, map, of } from 'rxjs'
 
 const ensureAuthGuard: CanMatchFn = () => {
@@ -28,18 +28,18 @@ export const routes: Routes = [
 	{
 		path: 'imprint',
 		title: 'Impressum',
-		loadComponent: () => import('./views/imprint.component'),
+		loadComponent: () => import('./views/imprint'),
 	},
 	{
 		path: 'privacy',
 		title: 'Datenschutz',
-		loadComponent: () => import('./views/privacy.component'),
+		loadComponent: () => import('./views/privacy'),
 	},
 	{
 		path: 'auth',
 		title: 'Anmelden',
 		canMatch: [ensureNoAuthGuard],
-		loadComponent: () => import('./views/auth.component'),
+		loadComponent: () => import('./views/auth'),
 	},
 	{
 		path: '',
@@ -48,22 +48,22 @@ export const routes: Routes = [
 			{
 				path: '',
 				title: 'Translate',
-				loadComponent: () => import('./views/index.component'),
+				loadComponent: () => import('./views'),
 			},
 			{
 				path: 'history',
 				title: 'Verlauf',
-				loadComponent: () => import('./views/history.component'),
+				loadComponent: () => import('./views/history'),
 			},
 			{
 				path: 'settings',
 				title: 'Einstellungen',
-				loadComponent: () => import('./views/settings.component'),
+				loadComponent: () => import('./views/settings'),
 			},
 			{
 				path: 'glossary',
 				title: 'Glossar',
-				loadComponent: () => import('./views/glossary.component'),
+				loadComponent: () => import('./views/glossary'),
 			},
 		],
 	},

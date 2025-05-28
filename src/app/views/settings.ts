@@ -6,8 +6,8 @@ import {
 } from '@angular/core'
 import { FormsModule, NgForm } from '@angular/forms'
 import { RouterModule, Router } from '@angular/router'
-import { SettingsService } from '../settings.service'
-import { TranslationService } from '../translation.service'
+import { SettingsService } from '../user-settings'
+import { TranslationService } from '../deepl-client'
 import { CommonModule } from '@angular/common'
 import {
 	DBButton,
@@ -17,7 +17,7 @@ import {
 	DBRadio,
 	DBSection,
 } from '@db-ux/ngx-core-components'
-import { HistoryService } from '../history.service'
+import { HistoryService } from '../history-storage'
 import { HttpErrorResponse } from '@angular/common/http'
 
 @Component({

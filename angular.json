@@ -1,10 +1,9 @@
 {
-	"$schema": ".yarn/unplugged/@angular-cli-npm-19.2.14-d1c8795a9e/node_modules/@angular/cli/lib/config/schema.json",
+	"$schema": ".yarn/unplugged/@angular-cli-npm-20.0.0-1708cd92b7/node_modules/@angular/cli/lib/config/schema.json",
 	"version": 1,
 	"cli": {
 		"packageManager": "yarn",
-		"analytics": false,
-		"schematicCollections": ["@angular-eslint/schematics"]
+		"analytics": false
 	},
 	"newProjectRoot": "projects",
 	"projects": {
@@ -45,30 +44,26 @@
 				"build": {
 					"builder": "@angular/build:application",
 					"options": {
-						"outputPath": "dist",
-						"index": "src/index.html",
 						"browser": "src/main.ts",
-						"polyfills": [],
 						"tsConfig": "tsconfig.app.json",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": [
 							"@db-ux/core-components/build/styles/rollup.css",
 							"src/styles.css"
-						],
-						"scripts": []
+						]
 					},
 					"configurations": {
 						"production": {
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1mb",
 									"maximumError": "1.5mb"
 								},
 								{
 									"type": "anyComponentStyle",
-									"maximumWarning": "2kb",
-									"maximumError": "4kb"
+									"maximumWarning": "4kb",
+									"maximumError": "8kb"
 								}
 							],
 							"outputHashing": "all"
@@ -101,10 +96,7 @@
 					"defaultConfiguration": "development"
 				},
 				"extract-i18n": {
-					"builder": "@angular/build:extract-i18n",
-					"options": {
-						"buildTarget": "ng-translate:build"
-					}
+					"builder": "@angular/build:extract-i18n"
 				},
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",

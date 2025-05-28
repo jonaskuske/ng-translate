@@ -2,7 +2,7 @@ import {
 	ApplicationConfig,
 	inject,
 	LOCALE_ID,
-	provideExperimentalZonelessChangeDetection,
+	provideZonelessChangeDetection,
 } from '@angular/core'
 import {
 	provideRouter,
@@ -19,12 +19,9 @@ import {
 } from '@angular/common/http'
 
 import { routes } from './app.routes'
-import { SettingsService } from './settings.service'
+import { SettingsService } from './user-settings'
 
-export function authInterceptor(
-	req: HttpRequest<unknown>,
-	next: HttpHandlerFn,
-) {
+export function addAuthHeader(req: HttpRequest<unknown>, next: HttpHandlerFn) {
 	const apiKey = inject(SettingsService).apiKey()
 	const reqWithAuth = req.clone({
 		headers: req.headers.append('authorization', `DeepL-Auth-Key ${apiKey}`),
@@ -41,8 +38,8 @@ export const appConfig: ApplicationConfig = {
 			withViewTransitions({ skipInitialTransition: true }),
 			withComponentInputBinding(),
 		),
-		provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
-		provideExperimentalZonelessChangeDetection(),
+		provideHttpClient(withFetch(), withInterceptors([addAuthHeader])),
+		provideZonelessChangeDetection(),
 		{ provide: LOCALE_ID, useValue: 'de-DE' },
 	],
 }

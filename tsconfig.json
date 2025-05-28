@@ -2,26 +2,30 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
-		"outDir": "./dist/out-tsc",
 		"strict": true,
 		"noImplicitOverride": true,
 		"noPropertyAccessFromIndexSignature": true,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
 		"skipLibCheck": true,
-		"esModuleInterop": true,
+		"isolatedModules": true,
 		"experimentalDecorators": true,
-		"moduleResolution": "Bundler",
 		"importHelpers": true,
 		"target": "ESNext",
-		"module": "ESNext",
-		"isolatedModules": true,
+		"module": "preserve",
 		"lib": ["ESNext", "dom", "DOM.Iterable"]
 	},
 	"angularCompilerOptions": {
 		"enableI18nLegacyMessageIdFormat": false,
 		"strictInjectionParameters": true,
 		"strictInputAccessModifiers": true,
+		"typeCheckHostBindings": true,
 		"strictTemplates": true
-	}
+	},
+	"files": [],
+	"references": [
+		{
+			"path": "./tsconfig.app.json"
+		}
+	]
 }

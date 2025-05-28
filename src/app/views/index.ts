@@ -12,7 +12,7 @@ import {
 	Validators,
 } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-import { TranslationService } from '../translation.service'
+import { TranslationService } from '../deepl-client'
 import {
 	DBAccordion,
 	DBAccordionItem,

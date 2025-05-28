@@ -12,8 +12,8 @@ import {
 	DBSection,
 	DBNotification,
 } from '@db-ux/ngx-core-components'
-import { SettingsService } from '../settings.service'
-import { TranslationService } from '../translation.service'
+import { SettingsService } from '../user-settings'
+import { TranslationService } from '../deepl-client'
 import { HttpErrorResponse } from '@angular/common/http'
 
 @Component({

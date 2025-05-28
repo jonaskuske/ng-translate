@@ -8,7 +8,7 @@
 
 <br>
 
-This project was built to circumvent the per-translation character limit of the DeepL free plan (which doesn't apply to the free API plan), experiment with the DB UI design system and try out some features of Angular 17 & 18.
+This project was built to circumvent the per-translation character limit of the DeepL free plan (which doesn't apply to the free API plan), experiment with the DB UI design system and try out some features of modern Angular.
 
 ## Development server
 

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
 import { Observable, map, of, switchMap, tap } from 'rxjs'
-import { HistoryService } from './history.service'
+import { HistoryService } from './history-storage'
 import { environment } from '../environments/environment'
 import {
 	TranslationData,
