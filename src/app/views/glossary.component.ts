@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { RouterOutlet, RouterModule } from '@angular/router'
-import { DBInfotext, DBSection } from '@db-ui/ngx-components'
+import { DBInfotext, DBSection } from '@db-ux/ngx-core-components'
 
 @Component({
 	selector: 'app-glossary',

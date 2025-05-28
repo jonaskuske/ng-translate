@@ -1,8 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-.db-checkbox input {
-	position: relative;
-}
-
 .mr-auto {
 	margin-right: auto;
 }
@@ -34,9 +30,4 @@
 
 .grid {
 	display: grid;
-}
-
-body {
-	--db-font-family-sans: Helvetica;
-    	--db-font-family-head: Helvetica;
 }

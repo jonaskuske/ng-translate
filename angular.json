@@ -52,7 +52,7 @@
 						"tsConfig": "tsconfig.app.json",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": [
-							"@db-ui/components/build/styles/rollup.css",
+							"@db-ux/core-components/build/styles/rollup.css",
 							"src/styles.css"
 						],
 						"scripts": []

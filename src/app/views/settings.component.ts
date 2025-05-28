@@ -17,7 +17,7 @@ import {
 	DBRadio,
 	DBSection,
 	DBSwitch,
-} from '@db-ui/ngx-components'
+} from '@db-ux/ngx-core-components'
 import { HistoryService } from '../history.service'
 import { HttpErrorResponse } from '@angular/common/http'
 
@@ -82,8 +82,8 @@ import { HttpErrorResponse } from '@angular/common/http'
 					semantic="critical"
 					variant="standalone"
 					ariaLive="assertive"
-					behaviour="closable"
-					(onClose)="errorMessage.set('')"
+					behavior="closable"
+					(close)="errorMessage.set('')"
 					style="margin-bottom: var(--db-spacing-responsive-2xs); display: block;"
 				>
 					{{ message }}

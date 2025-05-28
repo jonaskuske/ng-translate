@@ -3,6 +3,7 @@ import {
 	Component,
 	inject,
 	signal,
+	ViewEncapsulation,
 } from '@angular/core'
 import {
 	FormBuilder,
@@ -22,7 +23,7 @@ import {
 	DBSelect,
 	DBSwitch,
 	DBTextarea,
-} from '@db-ui/ngx-components'
+} from '@db-ux/ngx-core-components'
 import { CommonModule } from '@angular/common'
 import { Formality, TranslationData } from '../types'
 
@@ -48,6 +49,7 @@ const SOURCE_LANG_AUTO = '_auto_'
 		DBSwitch,
 	],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.None, // https://github.com/db-ux-design-system/core-web/issues/4303
 	template: `
 		<db-section width="large">
 			<form
@@ -151,7 +153,7 @@ const SOURCE_LANG_AUTO = '_auto_'
 					<db-textarea
 						formControlName="text"
 						[required]="true"
-						(input)="form.controls['text'].setValue($event.target.value)"
+						(input)="form.controls['text'].setValue($any($event).target.value)"
 						label="Zu übersetzender Text"
 						[showLabel]="false"
 						invalidMessage=" "
@@ -212,10 +214,10 @@ const SOURCE_LANG_AUTO = '_auto_'
 	`,
 	styles: [
 		`
-			:host ::ng-deep .db-textarea {
+			.db-textarea {
 				flex-grow: 1;
 			}
-			:host ::ng-deep textarea {
+			textarea {
 				height: 100%;
 			}
 

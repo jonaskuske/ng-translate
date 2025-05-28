@@ -11,7 +11,7 @@ import {
 	DBInput,
 	DBSection,
 	DBNotification,
-} from '@db-ui/ngx-components'
+} from '@db-ux/ngx-core-components'
 import { SettingsService } from '../settings.service'
 import { TranslationService } from '../translation.service'
 import { HttpErrorResponse } from '@angular/common/http'
@@ -40,8 +40,8 @@ import { HttpErrorResponse } from '@angular/common/http'
 					semantic="critical"
 					variant="standalone"
 					ariaLive="assertive"
-					behaviour="closable"
-					(onClose)="errorMessage.set('')"
+					behavior="closable"
+					(close)="errorMessage.set('')"
 				>
 					{{ message }}
 				</db-notification>

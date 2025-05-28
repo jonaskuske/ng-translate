@@ -14,7 +14,7 @@ import {
 	NavigationContentDirective,
 	NavigationDirective,
 	MetaNavigationDirective,
-} from '@db-ui/ngx-components'
+} from '@db-ux/ngx-core-components'
 import { SettingsService } from './settings.service'
 
 @Component({
@@ -34,7 +34,7 @@ import { SettingsService } from './settings.service'
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<div class="db-page" data-variant="fixed" data-fade-in="true">
-			<db-header [drawerOpen]="drawerOpen()" (onToggle)="toggle($event)">
+			<db-header [drawerOpen]="drawerOpen()" (toggle)="toggle($event)">
 				<db-brand brand [hideLogo]="true">Translate</db-brand>
 				<ng-container *dbMetaNavigation>
 					<a
