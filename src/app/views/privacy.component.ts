@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { RouterOutlet, RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router'
 import { DBSection } from '@db-ux/ngx-core-components'
 
 @Component({
 	selector: 'app-privacy',
-	standalone: true,
-	imports: [RouterOutlet, RouterModule, DBSection],
+	imports: [RouterModule, DBSection],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<db-section width="medium" spacing="small" data-density="functional">

@@ -5,7 +5,7 @@ import {
 	signal,
 } from '@angular/core'
 import { FormsModule, NgForm } from '@angular/forms'
-import { RouterOutlet, RouterModule, Router } from '@angular/router'
+import { RouterModule, Router } from '@angular/router'
 import { SettingsService } from '../settings.service'
 import { TranslationService } from '../translation.service'
 import { CommonModule } from '@angular/common'
@@ -16,22 +16,18 @@ import {
 	DBNotification,
 	DBRadio,
 	DBSection,
-	DBSwitch,
 } from '@db-ux/ngx-core-components'
 import { HistoryService } from '../history.service'
 import { HttpErrorResponse } from '@angular/common/http'
 
 @Component({
 	selector: 'app-settings',
-	standalone: true,
 	imports: [
-		RouterOutlet,
 		RouterModule,
 		FormsModule,
 		CommonModule,
 		DBButton,
 		DBInput,
-		DBSwitch,
 		DBSection,
 		DBRadio,
 		DBNotification,

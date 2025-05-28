@@ -11,7 +11,7 @@ import {
 	ReactiveFormsModule,
 	Validators,
 } from '@angular/forms'
-import { RouterOutlet, RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router'
 import { TranslationService } from '../translation.service'
 import {
 	DBAccordion,
@@ -31,10 +31,8 @@ const SOURCE_LANG_AUTO = '_auto_'
 
 @Component({
 	selector: 'app-translate',
-	standalone: true,
 	imports: [
 		CommonModule,
-		RouterOutlet,
 		RouterModule,
 		FormsModule,
 		ReactiveFormsModule,

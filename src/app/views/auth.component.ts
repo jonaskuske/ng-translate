@@ -5,7 +5,7 @@ import {
 	signal,
 } from '@angular/core'
 import { FormsModule, NgForm } from '@angular/forms'
-import { RouterOutlet, RouterModule, Router } from '@angular/router'
+import { RouterModule, Router } from '@angular/router'
 import {
 	DBButton,
 	DBInput,
@@ -18,9 +18,7 @@ import { HttpErrorResponse } from '@angular/common/http'
 
 @Component({
 	selector: 'app-auth',
-	standalone: true,
 	imports: [
-		RouterOutlet,
 		RouterModule,
 		DBButton,
 		DBInput,

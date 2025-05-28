@@ -1,5 +1,5 @@
 {
-	"$schema": ".yarn/unplugged/@angular-cli-npm-18.2.1-a4e8487d8d/node_modules/@angular/cli/lib/config/schema.json",
+	"$schema": ".yarn/unplugged/@angular-cli-npm-19.2.14-d1c8795a9e/node_modules/@angular/cli/lib/config/schema.json",
 	"version": 1,
 	"cli": {
 		"packageManager": "yarn",

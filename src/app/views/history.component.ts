@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common'
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
-import { RouterOutlet, RouterModule, Router } from '@angular/router'
+import { RouterModule, Router } from '@angular/router'
 import { HistoryService } from '../history.service'
 import { DBCard, DBSection } from '@db-ux/ngx-core-components'
 
 @Component({
 	selector: 'app-history',
-	standalone: true,
-	imports: [RouterOutlet, RouterModule, CommonModule, DBSection, DBCard],
+	imports: [RouterModule, CommonModule, DBSection, DBCard],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<db-section width="large" spacing="small">
