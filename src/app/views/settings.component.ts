@@ -112,11 +112,10 @@ import { HttpErrorResponse } from '@angular/common/http'
 						variant="floating"
 						[ngModel]="apiKey()"
 						autocomplete="off"
-						icon="key"
 						type="password"
 						label="API-Key"
 						invalidMessage=" "
-						customValidity="no-validation"
+						validation="no-validation"
 					/>
 				</div>
 

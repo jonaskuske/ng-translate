@@ -74,7 +74,7 @@ const SOURCE_LANG_AUTO = '_auto_'
 					label="Zielsprache"
 					[required]="true"
 					style="grid-column: 2"
-					customValidity="no-validation"
+					validation="no-validation"
 					invalidMessage=" "
 				>
 					@for (lang of getTargetLanguages$ | async; track lang.language) {
@@ -153,9 +153,9 @@ const SOURCE_LANG_AUTO = '_auto_'
 						[required]="true"
 						(input)="form.controls['text'].setValue($event.target.value)"
 						label="Zu übersetzender Text"
-						variant="hidden"
+						[showLabel]="false"
 						invalidMessage=" "
-						customValidity="no-validation"
+						validation="no-validation"
 					/>
 				</div>
 				<div
@@ -172,7 +172,7 @@ const SOURCE_LANG_AUTO = '_auto_'
 							type="button"
 							[disabled]="!translationResult().length"
 							size="medium"
-							[icon]="copySuccess() ? 'check' : 'copy'"
+							[icon]="copySuccess() ? 'check' : 'plus'"
 							variant="filled"
 						>
 							Kopieren

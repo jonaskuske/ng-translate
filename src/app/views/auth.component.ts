@@ -62,9 +62,8 @@ import { HttpErrorResponse } from '@angular/common/http'
 					variant="floating"
 					label="API-Key"
 					[required]="true"
-					icon="key"
 					message="Kostenlos erhältlich unter deepl.com/your-account/keys"
-					[customValidity]="!form.invalid ? 'no-validation' : undefined"
+					[validation]="!form.invalid ? 'no-validation' : undefined"
 					invalidMessage="Bitte gebe einen gültigen Key ein."
 					autocomplete="off"
 				/>
