@@ -417,19 +417,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/platform-browser@npm:^20.0.0":
-  version: 20.0.0
-  resolution: "@angular/platform-browser@npm:20.0.0"
+"@angular/platform-browser@npm:^20.0.5":
+  version: 20.0.5
+  resolution: "@angular/platform-browser@npm:20.0.5"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/animations": 20.0.0
-    "@angular/common": 20.0.0
-    "@angular/core": 20.0.0
+    "@angular/animations": 20.0.5
+    "@angular/common": 20.0.5
+    "@angular/core": 20.0.5
   peerDependenciesMeta:
     "@angular/animations":
       optional: true
-  checksum: 10c0/cc8aab426ee2a35b6c8b20b6a739212a0f9ec1575a8e068c6f213abf269e820f7c343c87151bf5e28482016fa1b76a3c8d258f047624a22c5a4f9b6e08ab5b91
+  checksum: 10c0/44c1add8d39e738906cecd5e0efa9a84033b17dc452b44ed076aab2850d0024a5771e9fc4e00b558a2947ae3a2ad9660e7fd2ba35d35a4944d76d87403e28743
   languageName: node
   linkType: hard
 
@@ -4814,7 +4814,7 @@ __metadata:
     "@angular/compiler-cli": "npm:^20.0.0"
     "@angular/core": "npm:^20.0.5"
     "@angular/forms": "npm:^20.0.0"
-    "@angular/platform-browser": "npm:^20.0.0"
+    "@angular/platform-browser": "npm:^20.0.5"
     "@angular/router": "npm:^20.0.5"
     "@db-ux/core-components": "npm:^2.1.2"
     "@db-ux/ngx-core-components": "npm:^2.1.2"

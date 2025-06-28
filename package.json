@@ -31,7 +31,7 @@
 		"@angular/compiler": "^20.0.0",
 		"@angular/core": "^20.0.5",
 		"@angular/forms": "^20.0.0",
-		"@angular/platform-browser": "^20.0.0",
+		"@angular/platform-browser": "^20.0.5",
 		"@angular/router": "^20.0.5",
 		"@db-ux/core-components": "^2.1.2",
 		"@db-ux/ngx-core-components": "^2.1.2",
