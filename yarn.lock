@@ -391,17 +391,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/router@npm:^20.0.0":
-  version: 20.0.0
-  resolution: "@angular/router@npm:20.0.0"
+"@angular/router@npm:^20.0.5":
+  version: 20.0.5
+  resolution: "@angular/router@npm:20.0.5"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/common": 20.0.0
-    "@angular/core": 20.0.0
-    "@angular/platform-browser": 20.0.0
+    "@angular/common": 20.0.5
+    "@angular/core": 20.0.5
+    "@angular/platform-browser": 20.0.5
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10c0/1d5291369f5e4784905a716dbaff2b7a458afcbc6cfcec65fda3fa050082aa68f83899ee45a54137dd0c8f9f8c82ea86f6613e0b0648467a627b5a3d04f2bb75
+  checksum: 10c0/746bf7e9ee0ca112b4b0364fb5f0d39329df164f4adf68bddf1181a4f1d8e3062af4689adb1903ea59e0e51cad7c18fd7b4b251ab20e8c8ea50b426077ac9892
   languageName: node
   linkType: hard
 
@@ -4759,7 +4759,7 @@ __metadata:
     "@angular/core": "npm:^20.0.0"
     "@angular/forms": "npm:^20.0.0"
     "@angular/platform-browser": "npm:^20.0.0"
-    "@angular/router": "npm:^20.0.0"
+    "@angular/router": "npm:^20.0.5"
     "@db-ux/core-components": "npm:^2.1.2"
     "@db-ux/ngx-core-components": "npm:^2.1.2"
     "@eslint/js": "npm:^9.27.0"
