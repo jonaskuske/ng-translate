@@ -35,6 +35,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular-devkit/architect@npm:>= 0.2000.0 < 0.2100.0":
+  version: 0.2000.4
+  resolution: "@angular-devkit/architect@npm:0.2000.4"
+  dependencies:
+    "@angular-devkit/core": "npm:20.0.4"
+    rxjs: "npm:7.8.2"
+  checksum: 10c0/ebca373f9c09309c13172c2cbf563b925518690cb516db63d1a4de075893516e25f0ad1c9a39628b239923669bb6e37c60c008d67a616609a43792e0932664fc
+  languageName: node
+  linkType: hard
+
 "@angular-devkit/core@npm:19.2.14, @angular-devkit/core@npm:>= 19.0.0 < 20.0.0":
   version: 19.2.14
   resolution: "@angular-devkit/core@npm:19.2.14"
@@ -73,6 +83,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular-devkit/core@npm:20.0.4, @angular-devkit/core@npm:>= 20.0.0 < 21.0.0":
+  version: 20.0.4
+  resolution: "@angular-devkit/core@npm:20.0.4"
+  dependencies:
+    ajv: "npm:8.17.1"
+    ajv-formats: "npm:3.0.1"
+    jsonc-parser: "npm:3.3.1"
+    picomatch: "npm:4.0.2"
+    rxjs: "npm:7.8.2"
+    source-map: "npm:0.7.4"
+  peerDependencies:
+    chokidar: ^4.0.0
+  peerDependenciesMeta:
+    chokidar:
+      optional: true
+  checksum: 10c0/1d3919f8911f36d800346a01e950a7dc2969b605493945a4338f0a9bc17e427be7ac3025cbcd6b7282643df42ef0a89ea016319b6bb85fc96a5273dd7696725e
+  languageName: node
+  linkType: hard
+
 "@angular-devkit/schematics@npm:20.0.0":
   version: 20.0.0
   resolution: "@angular-devkit/schematics@npm:20.0.0"
@@ -99,7 +128,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular-eslint/builder@npm:19.6.0, @angular-eslint/builder@npm:^19.6.0":
+"@angular-eslint/builder@npm:19.6.0":
   version: 19.6.0
   resolution: "@angular-eslint/builder@npm:19.6.0"
   dependencies:
@@ -109,6 +138,19 @@ __metadata:
     eslint: ^8.57.0 || ^9.0.0
     typescript: "*"
   checksum: 10c0/d1d4aa940fc97b749941c799bf5e6ca29cba5a2943779de1a6162a844855709e33e1d19123f14a8e902def5e450cb82d2996e04b7543c49c63889a8df02bf21f
+  languageName: node
+  linkType: hard
+
+"@angular-eslint/builder@npm:^20.1.1":
+  version: 20.1.1
+  resolution: "@angular-eslint/builder@npm:20.1.1"
+  dependencies:
+    "@angular-devkit/architect": "npm:>= 0.2000.0 < 0.2100.0"
+    "@angular-devkit/core": "npm:>= 20.0.0 < 21.0.0"
+  peerDependencies:
+    eslint: ^8.57.0 || ^9.0.0
+    typescript: "*"
+  checksum: 10c0/fd266276a583005f030dd98fae50fa735a3e64cfc33ee2dd02f0e55f241dcd9f6145db57851d9b8ed5e7985bbf7d0651de2b1f00593d9c96f2b7093802f58f83
   languageName: node
   linkType: hard
 
@@ -4750,7 +4792,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ng-translate@workspace:."
   dependencies:
-    "@angular-eslint/builder": "npm:^19.6.0"
+    "@angular-eslint/builder": "npm:^20.1.1"
     "@angular/build": "npm:^20.0.0"
     "@angular/cli": "npm:^20.0.0"
     "@angular/common": "npm:^20.0.0"
