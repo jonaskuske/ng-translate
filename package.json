@@ -51,7 +51,7 @@
 		"lint-staged": "^16.1.2",
 		"prettier": "^3.6.2",
 		"typescript": "~5.8.3",
-		"typescript-eslint": "^8.33.0"
+		"typescript-eslint": "^8.35.1"
 	},
 	"dependenciesMeta": {
 		"@angular/cli@20.0.0": {
