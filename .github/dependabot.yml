@@ -8,8 +8,22 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: 'daily'
+      time: '08:00'
+      timezone: 'Europe/Berlin'
+    allow:
+      - dependency-type: 'production'
+    groups:
+      major:
+        update-types:
+          - major
+      minor:
+        update-types:
+          - minor
+          - patch
   - package-ecosystem: "docker" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: 'daily'
+      time: '08:00'
+      timezone: 'Europe/Berlin'
