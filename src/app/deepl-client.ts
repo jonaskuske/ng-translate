@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { Observable, map, of, retry, switchMap, tap } from 'rxjs'
+import { Observable, map, of, retry, switchMap, tap, timer } from 'rxjs'
 import { HistoryService } from './history-storage'
 import { environment } from '../environments/environment'
 import {
@@ -13,6 +13,11 @@ import {
 const API_URL = `${environment.API_HOST}/api`
 const STORAGE_LANG_TRANSLATIONS = 'lang_names'
 
+const delayOnTooManyRequests = (err: HttpErrorResponse): Observable<number> => {
+	if (err.status !== 429) throw err
+	return timer(1000)
+}
+
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
 	private readonly http = inject(HttpClient)
@@ -22,7 +27,7 @@ export class TranslationService {
 		return this.http
 			.post<TranslationResult>(`${API_URL}/v2/translate`, data)
 			.pipe(
-				retry({ count: 3, delay: 1000 }),
+				retry({ count: 3, delay: delayOnTooManyRequests }),
 				tap((result) => {
 					if (addToHistory) void this.history.addEntry(result, data)
 				}),
@@ -32,14 +37,14 @@ export class TranslationService {
 	getUsage() {
 		return this.http
 			.get<UsageData>(`${API_URL}/v2/usage`)
-			.pipe(retry({ count: 3, delay: 1000 }))
+			.pipe(retry({ count: 3, delay: delayOnTooManyRequests }))
 	}
 
 	getSourceLanguages() {
 		return this.http
 			.get<Language[]>(`${API_URL}/v2/languages?type=source`)
 			.pipe(
-				retry({ count: 3, delay: 1000 }),
+				retry({ count: 3, delay: delayOnTooManyRequests }),
 				switchMap((result) => this.#translateDisplayNames(result)),
 			)
 	}
@@ -48,7 +53,7 @@ export class TranslationService {
 		return this.http
 			.get<Language[]>(`${API_URL}/v2/languages?type=target`)
 			.pipe(
-				retry({ count: 3, delay: 1000 }),
+				retry({ count: 3, delay: delayOnTooManyRequests }),
 				switchMap((result) => this.#translateDisplayNames(result)),
 			)
 	}

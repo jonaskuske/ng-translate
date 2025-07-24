@@ -40,6 +40,7 @@ export default tseslint.config(
 				},
 			],
 			'@typescript-eslint/unbound-method': ['error', { ignoreStatic: true }],
+			'@typescript-eslint/only-throw-error': 'off',
 		},
 	},
 	{
