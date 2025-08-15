@@ -894,30 +894,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@db-ux/core-components@npm:3.0.4, @db-ux/core-components@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "@db-ux/core-components@npm:3.0.4"
+"@db-ux/core-components@npm:3.0.5, @db-ux/core-components@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "@db-ux/core-components@npm:3.0.5"
   dependencies:
-    "@db-ux/core-foundations": "npm:3.0.4"
-  checksum: 10c0/25a97238131429e2e7b7dfd364cf14a749403f7fbf700a67cf6939648b6ded906c75d932ff646abfb70a7f5486b835feb8f6d6a0220a36aca3c76d4ae6e8ad83
+    "@db-ux/core-foundations": "npm:3.0.5"
+  checksum: 10c0/8247b3d7cde7dd9b4288c6c21aba88876e2a7c579775e30cbe764a02a9c2148c723d1fa767158863d08bac1b57911d09ec1331f16afb7cc0a526783e37f55577
   languageName: node
   linkType: hard
 
-"@db-ux/core-foundations@npm:3.0.4":
-  version: 3.0.4
-  resolution: "@db-ux/core-foundations@npm:3.0.4"
-  checksum: 10c0/9987a2807b3c3b92dff42bd7c6e7382dbc578284205354a7e5ec2af297dbb2d49ad018603bb0c98acbaebfd98fe56e42ac2d58611a31ffcdc1c311b312e99e5f
+"@db-ux/core-foundations@npm:3.0.5":
+  version: 3.0.5
+  resolution: "@db-ux/core-foundations@npm:3.0.5"
+  checksum: 10c0/79c8d6073bd3ad45592313a55f3d5832777200088306b4e2efec200e68c0e0d9543566b06d56208ff26351af1bca074f11961d175238117d9b056cbecc179c4b
   languageName: node
   linkType: hard
 
-"@db-ux/ngx-core-components@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "@db-ux/ngx-core-components@npm:3.0.4"
+"@db-ux/ngx-core-components@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "@db-ux/ngx-core-components@npm:3.0.5"
   dependencies:
-    "@db-ux/core-components": "npm:3.0.4"
-    "@db-ux/core-foundations": "npm:3.0.4"
+    "@db-ux/core-components": "npm:3.0.5"
+    "@db-ux/core-foundations": "npm:3.0.5"
     tslib: "npm:^2.3.0"
-  checksum: 10c0/738c3d4463b694d818cad96d9d3253861026a3a9de586935f002f5df1b054cc9f71ffcba4fdcf8c96ab8639a3bb8b05394b77a4774b0b788fae5f1e7baade6c5
+  checksum: 10c0/cf93f4c7656a0b07f60b437c9309c9a1bcc36754fc135c2b9fecfd4076fea750aed733cd134c3a92cee18346d37bb1effae3b70521526de90f3fae31708ea8ab
   languageName: node
   linkType: hard
 
@@ -5383,8 +5383,8 @@ __metadata:
     "@angular/forms": "npm:^20.1.7"
     "@angular/platform-browser": "npm:^20.1.7"
     "@angular/router": "npm:^20.1.7"
-    "@db-ux/core-components": "npm:^3.0.4"
-    "@db-ux/ngx-core-components": "npm:^3.0.4"
+    "@db-ux/core-components": "npm:^3.0.5"
+    "@db-ux/ngx-core-components": "npm:^3.0.5"
     "@eslint/js": "npm:^9.33.0"
     angular-eslint: "npm:20.1.1"
     eslint: "npm:^9.33.0"
