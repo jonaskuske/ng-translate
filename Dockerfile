@@ -9,7 +9,7 @@ RUN corepack enable && yarn install --immutable
 COPY . .
 RUN yarn build
 
-FROM caddy:2.10.0-alpine AS runtime
+FROM caddy:2.10.2-alpine AS runtime
 ENV PORT=80
 COPY Caddyfile /etc/caddy/Caddyfile
 COPY --from=builder /usr/src/app/dist/ng-translate/browser /srv/site
