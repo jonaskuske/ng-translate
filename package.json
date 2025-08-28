@@ -27,31 +27,31 @@
 		"singleQuote": true
 	},
 	"dependencies": {
-		"@angular/common": "^20.2.1",
-		"@angular/compiler": "^20.2.1",
-		"@angular/core": "^20.2.1",
-		"@angular/forms": "^20.2.1",
-		"@angular/platform-browser": "^20.2.1",
-		"@angular/router": "^20.2.1",
-		"@db-ux/core-components": "^3.0.7",
-		"@db-ux/ngx-core-components": "^3.0.7",
+		"@angular/common": "^20.2.2",
+		"@angular/compiler": "^20.2.2",
+		"@angular/core": "^20.2.2",
+		"@angular/forms": "^20.2.2",
+		"@angular/platform-browser": "^20.2.2",
+		"@angular/router": "^20.2.2",
+		"@db-ux/core-components": "^3.0.8",
+		"@db-ux/ngx-core-components": "^3.0.8",
 		"idb": "^8.0.3",
 		"rxjs": "~7.8.2",
 		"tslib": "^2.8.1"
 	},
 	"devDependencies": {
-		"@angular-eslint/builder": "^20.1.1",
-		"@angular/build": "^20.2.0",
-		"@angular/cli": "^20.2.0",
-		"@angular/compiler-cli": "^20.2.1",
-		"@eslint/js": "^9.33.0",
-		"angular-eslint": "20.1.1",
-		"eslint": "^9.33.0",
+		"@angular-eslint/builder": "^20.2.0",
+		"@angular/build": "^20.2.1",
+		"@angular/cli": "^20.2.1",
+		"@angular/compiler-cli": "^20.2.2",
+		"@eslint/js": "^9.34.0",
+		"angular-eslint": "20.2.0",
+		"eslint": "^9.34.0",
 		"husky": "^9.1.7",
 		"lint-staged": "^16.1.5",
 		"prettier": "^3.6.2",
 		"typescript": "~5.8.3",
-		"typescript-eslint": "^8.40.0"
+		"typescript-eslint": "^8.41.0"
 	},
 	"dependenciesMeta": {
 		"@angular/cli@20.1.3": {
