@@ -895,30 +895,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@db-ux/core-components@npm:3.0.8, @db-ux/core-components@npm:^3.0.8":
-  version: 3.0.8
-  resolution: "@db-ux/core-components@npm:3.0.8"
+"@db-ux/core-components@npm:3.1.0, @db-ux/core-components@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@db-ux/core-components@npm:3.1.0"
   dependencies:
-    "@db-ux/core-foundations": "npm:3.0.8"
-  checksum: 10c0/a61931bd3e081af52ae2b816d6c9b996007fa5939c3d03cf0be21d89891495e1987fea666026e2e57de040c12473a84ff23acb16d84fa99a432812d017635589
+    "@db-ux/core-foundations": "npm:3.1.0"
+  checksum: 10c0/d70e9e375dde9f1a3d1c5799ca6a5c5e080cb1ea4d1811951bb8ceb00ec833042b954ebac0fe8e788261831b56f046b04694bc2d3827cdc1af20e066a3556e76
   languageName: node
   linkType: hard
 
-"@db-ux/core-foundations@npm:3.0.8":
-  version: 3.0.8
-  resolution: "@db-ux/core-foundations@npm:3.0.8"
-  checksum: 10c0/49863e5023ab4fd146f96f5f1eaa266325e663d6f581c270bdced9f7366c45f46dac54a0ed4a159c5ca12b1b7fc83431f404833e811d9c3f51be2521bc14dc18
+"@db-ux/core-foundations@npm:3.1.0":
+  version: 3.1.0
+  resolution: "@db-ux/core-foundations@npm:3.1.0"
+  checksum: 10c0/b8403979f481d7f98a3c7d58b3074da4ba275917fd20daf7ab7ab256afe81644e02e26a1b5afb35190dabd38278511290583df581dad5cca44d44b047c83fea5
   languageName: node
   linkType: hard
 
-"@db-ux/ngx-core-components@npm:^3.0.8":
-  version: 3.0.8
-  resolution: "@db-ux/ngx-core-components@npm:3.0.8"
+"@db-ux/ngx-core-components@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@db-ux/ngx-core-components@npm:3.1.0"
   dependencies:
-    "@db-ux/core-components": "npm:3.0.8"
-    "@db-ux/core-foundations": "npm:3.0.8"
+    "@db-ux/core-components": "npm:3.1.0"
+    "@db-ux/core-foundations": "npm:3.1.0"
     tslib: "npm:^2.3.0"
-  checksum: 10c0/7086ec971895db354f5117964094f162482925024c7f142e0b31491612640d8dd0dddd6368a1fbfe393e2900161ba9db9ee8fc3e41e14f799ea9229b659057be
+  checksum: 10c0/e03501d96b5f2ef234a9da1c5e82326b4461c8d31a842ca5e2c43e6c583aa902dfecdac32c2fd309c47456456ad7cc0e79238cf9836120f7fecccaad666fb17c
   languageName: node
   linkType: hard
 
@@ -1307,7 +1307,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint-community/eslint-utils@npm:^4.2.0, @eslint-community/eslint-utils@npm:^4.4.0":
+"@eslint-community/eslint-utils@npm:^4.4.0":
   version: 4.4.0
   resolution: "@eslint-community/eslint-utils@npm:4.4.0"
   dependencies:
@@ -1326,6 +1326,17 @@ __metadata:
   peerDependencies:
     eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
   checksum: 10c0/c0f4f2bd73b7b7a9de74b716a664873d08ab71ab439e51befe77d61915af41a81ecec93b408778b3a7856185244c34c2c8ee28912072ec14def84ba2dec70adf
+  languageName: node
+  linkType: hard
+
+"@eslint-community/eslint-utils@npm:^4.8.0":
+  version: 4.9.0
+  resolution: "@eslint-community/eslint-utils@npm:4.9.0"
+  dependencies:
+    eslint-visitor-keys: "npm:^3.4.3"
+  peerDependencies:
+    eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
+  checksum: 10c0/8881e22d519326e7dba85ea915ac7a143367c805e6ba1374c987aa2fbdd09195cc51183d2da72c0e2ff388f84363e1b220fd0d19bef10c272c63455162176817
   languageName: node
   linkType: hard
 
@@ -1387,10 +1398,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.34.0, @eslint/js@npm:^9.34.0":
-  version: 9.34.0
-  resolution: "@eslint/js@npm:9.34.0"
-  checksum: 10c0/53f1bfd2a374683d9382a6850354555f6e89a88416c34a5d34e9fbbaf717e97c2b06300e8f93e5eddba8bda8951ccab7f93a680e56ded1a3d21d526019e69bab
+"@eslint/js@npm:9.35.0, @eslint/js@npm:^9.35.0":
+  version: 9.35.0
+  resolution: "@eslint/js@npm:9.35.0"
+  checksum: 10c0/d40fe38724bc76c085c0b753cdf937fa35c0d6807ae76b2632e3f5f66c3040c91adcf1aff2ce70b4f45752e60629fadc415eeec9af3be3c274bae1cac54b9840
   languageName: node
   linkType: hard
 
@@ -4211,17 +4222,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^9.34.0":
-  version: 9.34.0
-  resolution: "eslint@npm:9.34.0"
+"eslint@npm:^9.35.0":
+  version: 9.35.0
+  resolution: "eslint@npm:9.35.0"
   dependencies:
-    "@eslint-community/eslint-utils": "npm:^4.2.0"
+    "@eslint-community/eslint-utils": "npm:^4.8.0"
     "@eslint-community/regexpp": "npm:^4.12.1"
     "@eslint/config-array": "npm:^0.21.0"
     "@eslint/config-helpers": "npm:^0.3.1"
     "@eslint/core": "npm:^0.15.2"
     "@eslint/eslintrc": "npm:^3.3.1"
-    "@eslint/js": "npm:9.34.0"
+    "@eslint/js": "npm:9.35.0"
     "@eslint/plugin-kit": "npm:^0.3.5"
     "@humanfs/node": "npm:^0.16.6"
     "@humanwhocodes/module-importer": "npm:^1.0.1"
@@ -4257,7 +4268,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: 10c0/ba3e54fa0c8ed23d062f91519afaae77fed922a6c4d76130b6cd32154bcb406aaea4b3c5ed88e0be40828c1d5b6921592f3947dbdc5e2043de6bd7aa341fe5ea
+  checksum: 10c0/798c527520ccf62106f8cd210bd1db1f8eb1b0e7a56feb0a8b322bf3a1e6a0bc6dc3a414542c22b1b393d58d5e3cd0252c44c023049de9067b836450503a2f03
   languageName: node
   linkType: hard
 
@@ -5675,11 +5686,11 @@ __metadata:
     "@angular/forms": "npm:^20.2.4"
     "@angular/platform-browser": "npm:^20.2.4"
     "@angular/router": "npm:^20.2.4"
-    "@db-ux/core-components": "npm:^3.0.8"
-    "@db-ux/ngx-core-components": "npm:^3.0.8"
-    "@eslint/js": "npm:^9.34.0"
+    "@db-ux/core-components": "npm:^3.1.0"
+    "@db-ux/ngx-core-components": "npm:^3.1.0"
+    "@eslint/js": "npm:^9.35.0"
     angular-eslint: "npm:20.2.0"
-    eslint: "npm:^9.34.0"
+    eslint: "npm:^9.35.0"
     husky: "npm:^9.1.7"
     idb: "npm:^8.0.3"
     lint-staged: "npm:^16.1.6"
