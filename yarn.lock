@@ -895,28 +895,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@db-ux/core-components@npm:^3.1.15":
-  version: 3.1.15
-  resolution: "@db-ux/core-components@npm:3.1.15"
+"@db-ux/core-components@npm:3.1.16, @db-ux/core-components@npm:^3.1.16":
+  version: 3.1.16
+  resolution: "@db-ux/core-components@npm:3.1.16"
   dependencies:
-    "@db-ux/core-foundations": "npm:*"
-  checksum: 10c0/f311dc43be4713bbbf466e9a46f00c280f202c40293f89f054022744d988a02f60f0caa32d1fbd5a7e737d2c01f436907f09a9fb2bdd92b68e904846cd9c9c79
+    "@db-ux/core-foundations": "npm:3.1.16"
+  checksum: 10c0/476ffba63582e397bc4529e8d6a4197bb1ed4f2f6d777a54d2af60da9f5b78a3f592602c978f1a021b356da0eac60fbdc470cc89627653d14ac30f596e973909
   languageName: node
   linkType: hard
 
-"@db-ux/core-foundations@npm:*":
-  version: 3.1.15
-  resolution: "@db-ux/core-foundations@npm:3.1.15"
-  checksum: 10c0/ee768117c1a7f1821d329e32ec9b1a3079459c59d70860f7589140f338f31f2a63679d9ad298b35256a3a5cfadb76fe43cd54c6b185bd1518a2b232471857a90
+"@db-ux/core-foundations@npm:3.1.16":
+  version: 3.1.16
+  resolution: "@db-ux/core-foundations@npm:3.1.16"
+  checksum: 10c0/8aae022680c8e7a9f4636410f674ef39f0bbd766b9119073e55ad8a4154f4a36311895928f100dc6769edc30547aa200b952138bee5c8d4754670ef1f10f61e5
   languageName: node
   linkType: hard
 
-"@db-ux/ngx-core-components@npm:^3.1.15":
-  version: 3.1.15
-  resolution: "@db-ux/ngx-core-components@npm:3.1.15"
+"@db-ux/ngx-core-components@npm:^3.1.16":
+  version: 3.1.16
+  resolution: "@db-ux/ngx-core-components@npm:3.1.16"
   dependencies:
+    "@db-ux/core-components": "npm:3.1.16"
+    "@db-ux/core-foundations": "npm:3.1.16"
     tslib: "npm:^2.3.0"
-  checksum: 10c0/b7cc058ef75e864f0774d628774392b5b9c0893f521a165728d9e909c54e55a406ace63121d99c7e4541c548b2b53df7deda1c558105927f966f8c658daad6f1
+  checksum: 10c0/1ae35d85735df5ecf8e3c8fc26f487e3c6cca359f608a8fca5829b8bcadb3b8852037b5c6f196aede3e84e5e94af05ec334cf049bebe432f4e6f48341c0748d2
   languageName: node
   linkType: hard
 
@@ -5677,8 +5679,8 @@ __metadata:
     "@angular/forms": "npm:^20.3.2"
     "@angular/platform-browser": "npm:^20.3.2"
     "@angular/router": "npm:^20.3.2"
-    "@db-ux/core-components": "npm:^3.1.15"
-    "@db-ux/ngx-core-components": "npm:^3.1.15"
+    "@db-ux/core-components": "npm:^3.1.16"
+    "@db-ux/ngx-core-components": "npm:^3.1.16"
     "@eslint/js": "npm:^9.36.0"
     angular-eslint: "npm:20.3.0"
     eslint: "npm:^9.36.0"
