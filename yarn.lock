@@ -944,30 +944,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@db-ux/core-components@npm:4.5.4, @db-ux/core-components@npm:^4.5.4":
-  version: 4.5.4
-  resolution: "@db-ux/core-components@npm:4.5.4"
+"@db-ux/core-components@npm:4.6.0, @db-ux/core-components@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "@db-ux/core-components@npm:4.6.0"
   dependencies:
-    "@db-ux/core-foundations": "npm:4.5.4"
-  checksum: 10c0/3955490142e1647298bae89c7109b041044dc7d36fa43065f4b2e36f8eafd6d845ef6b7186fe0dcf987c70979af51ced542626382414abcb9e178165c20cb75b
+    "@db-ux/core-foundations": "npm:4.6.0"
+  checksum: 10c0/f119e33a2951a6d5a72063b363ebe1b43ac1454cd222a2b5b5c32afc4c04794ffc264610e5f4f9b1410de91f576bba9473a85264827ac34e36592239e6b72cdc
   languageName: node
   linkType: hard
 
-"@db-ux/core-foundations@npm:4.5.4":
-  version: 4.5.4
-  resolution: "@db-ux/core-foundations@npm:4.5.4"
-  checksum: 10c0/65afa027641048b4755a2bd59e9d6822177da96877f2d06057d5731c50c8bb707b0071a779932f55fbcc6f22881cfd41ec48a9ca821cb52e3e16d0218db77d05
+"@db-ux/core-foundations@npm:4.6.0":
+  version: 4.6.0
+  resolution: "@db-ux/core-foundations@npm:4.6.0"
+  checksum: 10c0/b729dc8debc97d71d012d4dd23dde01e99437fae82cd801082203d351a7ef8ed970808b32330e0eaf67d9247f79c5b29557b6b2908589cb10e6c19be27ac8402
   languageName: node
   linkType: hard
 
-"@db-ux/ngx-core-components@npm:^4.5.4":
-  version: 4.5.4
-  resolution: "@db-ux/ngx-core-components@npm:4.5.4"
+"@db-ux/ngx-core-components@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "@db-ux/ngx-core-components@npm:4.6.0"
   dependencies:
-    "@db-ux/core-components": "npm:4.5.4"
-    "@db-ux/core-foundations": "npm:4.5.4"
+    "@db-ux/core-components": "npm:4.6.0"
+    "@db-ux/core-foundations": "npm:4.6.0"
     tslib: "npm:^2.3.0"
-  checksum: 10c0/67a551767bcaa812351eff22e93d43203328fbf8621dd14fa5351a2e2a4864acee29d0f134ba82ca903fcca0f8d510561054f4817989fd453c3d6b402964d4f1
+  checksum: 10c0/61033f9abb51f528f1f1dc6de775462cb11c41bd4473da401fab14bc22669ed2b8da1a0c31f1c299bbb5944ab0acfcbc3cc651a0fbbee626fa6710d756b2f98f
   languageName: node
   linkType: hard
 
@@ -5511,15 +5511,15 @@ __metadata:
     "@angular/forms": "npm:^21.2.8"
     "@angular/platform-browser": "npm:^21.2.8"
     "@angular/router": "npm:^21.2.8"
-    "@db-ux/core-components": "npm:^4.5.4"
-    "@db-ux/ngx-core-components": "npm:^4.5.4"
+    "@db-ux/core-components": "npm:^4.6.0"
+    "@db-ux/ngx-core-components": "npm:^4.6.0"
     "@eslint/js": "npm:^10.0.1"
     angular-eslint: "npm:21.3.1"
     eslint: "npm:^10.2.0"
     husky: "npm:^9.1.7"
     idb: "npm:^8.0.3"
     lint-staged: "npm:^16.4.0"
-    prettier: "npm:^3.8.1"
+    prettier: "npm:^3.8.2"
     rxjs: "npm:~7.8.2"
     tslib: "npm:^2.8.1"
     typescript: "npm:~5.8.3"
@@ -6038,12 +6038,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.8.1":
-  version: 3.8.1
-  resolution: "prettier@npm:3.8.1"
+"prettier@npm:^3.8.2":
+  version: 3.8.2
+  resolution: "prettier@npm:3.8.2"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/33169b594009e48f570471271be7eac7cdcf88a209eed39ac3b8d6d78984039bfa9132f82b7e6ba3b06711f3bfe0222a62a1bfb87c43f50c25a83df1b78a2c42
+  checksum: 10c0/2d64bd01d269c8dd6d8c423a2a2e1fb88230a53aac523204b327de40059ccf8bd8e6fe70b8ce6154b97ed4442e9fd878504ff8a5330f3a4f64bd13d1576f7652
   languageName: node
   linkType: hard
 
